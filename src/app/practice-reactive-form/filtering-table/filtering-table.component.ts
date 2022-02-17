@@ -1,9 +1,11 @@
 import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSelect } from '@angular/material/select';
+import { People } from './element.interface';
+import { PEOPLE } from './ELEMENT_DATA';
 
 @Component({
   selector: 'app-filtering-table',
@@ -15,137 +17,69 @@ export class FilteringTableComponent implements OnInit {
   /* KHU VUC THIET LAP FORM MODEL */
   /* ================================================================= */
   autocompleteForm!: FormGroup;
-  people = [
-    {
-      name: 'John',
-      id: 1,
-      colour: 'Green',
-      pet: 'Dog'
-    },
-    {
-      name: 'Sarah',
-      id: 2,
-      colour: 'Purple',
-      pet: 'Cat'
-    },
-    {
-      name: 'Lindsay',
-      id: 3,
-      colour: 'Blue',
-      pet: 'Lizard'
-    },
-    {
-      name: 'Megan',
-      id: 4,
-      colour: 'Orange',
-      pet: 'Dog'
-    }
-  ];
-  tableCols = [
-    { key: 'name', display: 'name' },
-    { key: 'colour', display: 'favouriteColour' },
-    { key: 'id', display: 'id' },
-    { key: 'pet', display: 'pet' }
+  peoples: People[] = PEOPLE;
+  @Input('cols') tableCols = [
+    { key: 'name', display: 'NAME' },
+    { key: 'colour', display: 'FAVOURITE COLOUR' },
+    { key: 'id', display: 'ID' },
+    { key: 'pet', display: 'PET' }
   ]
   get keys() { return this.tableCols.map(({ key }) => key); }
   selection = new SelectionModel<any>(true, []);
   @Output('outSelectedRow') outSelectedRow = new EventEmitter<any>();
-  inputFilterList!: string;
+  inputFilterNoResult!: string;
+  private _selection = new Set<any>();
+  isSelected(value: any): boolean {
+    return this._selection.has(value);
+  }
+  @Input() dataSource = new MatTableDataSource();
+  selectedFilter: People = { id: 0, name: '', colour: '', pet: '' };
+  @ViewChild('matSelect') matSelect!: MatSelect;
+  constructor(private fb: FormBuilder) {
+    this.autocompleteForm = this.fb.group({
+      /* <mat-select-trigger>
+      {{autocompleteForm.get('selectControl')?.value ? autocompleteForm.get('selectControl')?.value : ''}}
+      </mat-select-trigger> */
+      selectControl: [this.peoples[0].name],
+      inputSearchControl: '',
+    })
+    this.dataSource.data = this.peoples;
+    /* watching selected row */
+    this.selection.changed.subscribe(s => {
+      this.selectedFilter = s.source.selected[0];
+    });
+  }
+  get selectedControl() {
+    return this.autocompleteForm.get('selectedControl');
+  }
+  get inputSearchControl() {
+    return this.autocompleteForm.get('inputSearchControl');
+  }
+
+  ngOnInit() {
+    // listen for changes
+    this.inputSearchControl?.valueChanges.subscribe(
+      (enteringFilter: string) => {
+        this.inputFilterNoResult = enteringFilter;
+        this.dataSource.filter = enteringFilter;
+      }
+    );
+  }
   onSelectedRow(selectedRow: any): void {
     this.selection.clear();
     this.selection.toggle(selectedRow);
     this.outSelectedRow.emit(selectedRow);
+    this.selectedFilter = selectedRow;
+    console.log(this.selectedFilter);
+    this.selectedControl?.patchValue(this.selectedFilter);
+    this.matSelect.close();
   }
-
-  dataSource = new MatTableDataSource();
-  filterValues = {
-    name: '',
-    id: '',
-    colour: '',
-    pet: ''
-  };
-
-  constructor(private fb: FormBuilder) {
-    this.autocompleteForm = this.fb.group({
-      name: '',
-      id: '',
-      colour: '',
-      pet: '',
-    })
-    this.dataSource.data = this.people;
-    this.dataSource.filterPredicate = this.createFilter();
-  }
-
-  ngOnInit() {
-    this.autocompleteForm.get('name')?.valueChanges
-      .subscribe(
-        (name: string) => {
-          this.filterValues.name = name;
-          this.inputFilterList = name;
-          this.dataSource.filter = JSON.stringify(this.filterValues);
-        }
-      )
-    this.autocompleteForm.get('id')?.valueChanges
-      .subscribe(
-        (id: string) => {
-          this.filterValues.id = id;
-          this.inputFilterList = id;
-          this.dataSource.filter = JSON.stringify(this.filterValues);
-        }
-      )
-    this.autocompleteForm.get('colour')?.valueChanges
-      .subscribe(
-        (colour: string) => {
-          this.filterValues.colour = colour;
-          this.inputFilterList = colour;
-          this.dataSource.filter = JSON.stringify(this.filterValues);
-        }
-      )
-    this.autocompleteForm.get('pet')?.valueChanges
-      .subscribe(
-        (pet: string) => {
-          this.filterValues.pet = pet;
-          this.inputFilterList = pet;
-          this.dataSource.filter = JSON.stringify(this.filterValues);
-        }
-      )
-  }
-
-  createFilter(): (data: any, filter: string) => boolean {
-    let filterFunction = function (data: { name: string; id: { toString: () => string; }; colour: string; pet: string; }, filter: string): boolean {
-      let searchTerms = JSON.parse(filter);
-      return data.name.toLowerCase().indexOf(searchTerms.name) !== -1
-        && data.id.toString().toLowerCase().indexOf(searchTerms.id) !== -1
-        && data.colour.toLowerCase().indexOf(searchTerms.colour) !== -1
-        && data.pet.toLowerCase().indexOf(searchTerms.pet) !== -1;
-    }
-    return filterFunction;
-  }
-  showBooleanClass(column: any): any {
-    let result = '';
-    if (column.isClass) {
-      if (column.isArrayClass) {
-        for (const key of column.class) {
-          result += key ? `${key ? key : ''},` : `${key ? key : ''},`.substring(0, result.length - 1);
-        }
-        return result.substring(0, result.length - 1);
-      }
-      else {
-        result = column.class;
-        return result;
-      }
-    }
-    if (column.config && column.config.isClass) {
-      if (column.config.isArrayClass) {
-        for (const key of column.config.class) {
-          result += key ? `${key ? key : ''},` : `${key ? key : ''},`.substring(0, result.length - 1);
-        }
-        return result.substring(0, result.length - 1);
-      }
-      else {
-        result = column.config.class;
-        return result;
-      }
+  onDblclickSelectedRow(selectedRow: any, mouseEvent?: MouseEvent): void {
+    if (mouseEvent && mouseEvent.type === 'dblclick') {
+      this.selectedFilter = selectedRow;
+      console.log(this.selectedFilter);
+      this.selectedControl?.patchValue(this.selectedFilter);
+      this.matSelect.close();
     }
   }
 }

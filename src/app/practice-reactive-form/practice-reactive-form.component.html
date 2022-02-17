@@ -2,7 +2,42 @@
     <article>
         <h1>angular form reactive practice</h1>
         <form [formGroup]="customerForm">
-            <input type="text" formControlName="firstName" placeholder="firstName">
+            <div>
+                <label for="sendCatalog">firstName</label>
+                <input type="text" formControlName="firstName" placeholder="First Name">
+            </div>
+            <div>
+                <label for="sendCatalog">lastname</label>
+                <input type="text" formControlName="lastName" placeholder="Last Name">
+            </div>
+            <div>
+                <label for="sendCatalog">email</label>
+                <input type="email" formControlName="email" placeholder="Email">
+            </div>
+            <div>
+                <input type="checkbox" formControlName="sendCatalog" value="true" name="sendCatalog">
+                <label for="sendCatalog">Send Catalog</label>
+            </div>
+            <div>
+                <select formControlName="selectControl">
+                    <option *ngFor="let item of list" [value]="item">{{item}}</option>
+                </select>
+                <label for="sendCatalog">Send Catalog</label>
+            </div>
+            <div>
+                <button type="button" (click)="save()" [disabled]="customerForm.valid"
+                    [title]="customerForm.valid ? 'Save your enter data' : 'Disable until form data is valid'">save</button>
+                <button type="button" (click)="populateTestData()">Test data</button>
+            </div>
         </form>
+    </article>
+    <article>
+        <h1>form values and states</h1>
+        <div>
+            <p>dirty: {{customerForm.dirty}}</p>
+            <p>touched: {{customerForm.touched}}</p>
+            <p>valid: {{customerForm.valid}}</p>
+            <p>values: {{customerForm.value|json}}</p>
+        </div>
     </article>
 </section>

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+export interface Customer {
+  id: number,
+  name: string
+}
 export class Customer {
-
 }
 
 @Component({
@@ -13,13 +15,38 @@ export class Customer {
 export class PracticeReactiveFormComponent implements OnInit {
   customer: Customer = new Customer();
   customerForm!: FormGroup;
-  constructor() { }
+  title!: string;
+  model!: any;
+  list!: any;
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.customerForm = new FormGroup({
-      firstName: new FormControl(),
-      lastName: new FormControl(),
-    });
+    this.customerForm = this.fb.group({
+      firstName: '',
+      lastName: '',
+      email: '',
+      sendCatalog: false,
+      selectControl: [Customer]
+    })
+    // this.customerForm = new FormGroup({
+    //   firstName: new FormControl(),
+    //   lastName: new FormControl(),
+    //   email: new FormControl(),
+    //   sendCatalog: new FormControl(true)
+    // });
   }
-
+  populateTestData(): void {
+    this.customerForm.patchValue({
+      firstName: 'Sok',
+      lastName: 'Thanh Kim',
+      email: 'thanhsk1991@gmail.com',
+      sendCatalog: false,
+      selectControl: [
+        { id: 1, name: 'thanh' }
+      ]
+    })
+  }
+  save(): void {
+    console.log(this.customerForm);
+  }
 }

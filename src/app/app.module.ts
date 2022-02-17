@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { Router, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { PracticeReactiveFormModule } from './practice-reactive-form/practice-reactive-form.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSelectFilterModule } from 'mat-select-filter';
 
 export const ROUTES: Routes = [
   { path: '', loadChildren: () => import('./practice-reactive-form/practice-reactive-form.module').then(m => m.PracticeReactiveFormModule) }
@@ -15,9 +17,12 @@ export const ROUTES: Routes = [
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     ReactiveFormsModule,
     PracticeReactiveFormModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    BrowserAnimationsModule,
+    MatSelectFilterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

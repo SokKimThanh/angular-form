@@ -1,0 +1,11 @@
+<p>filter-on-mat-option works!</p>
+<mat-form-field>
+    <mat-select (selectionChange)="getSubtier($event.value)">
+        <!-- <mat-select-filter [placeholder]="'Search..'" [array]="variables" (filteredReturn)="filteredVariables = $event"> -->
+        <mat-select-filter [array]="variables" (filteredReturn)="filteredVariables = $event">
+        </mat-select-filter>
+        <mat-option *ngFor="let variable of filteredVariables" [value]="variable.name">
+            {{variable.name}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

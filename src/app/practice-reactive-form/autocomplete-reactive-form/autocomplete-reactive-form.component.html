@@ -1,0 +1,41 @@
+<section>
+    <article>
+        <h1>Autocomplete Table Reactive form</h1>
+        <!-- form model -->
+        <form [formGroup]="autocompleteForm">
+            <h4>mat-select</h4>
+            <mat-form-field class="mat-select-control" appearance="fill">
+                <mat-label>Favorite Food</mat-label>
+                <mat-select formControlName="selectControl" name="food">
+                    <!-- show name format-->
+                    <mat-select-trigger> {{selectTriggerRow ? selectTriggerRow : ''}} </mat-select-trigger>
+                    <!-- input search -->
+                    <div class="autocomplete-filter">
+                        <mat-form-field class="autocomplete-filter-inputSearch" appearance="fill">
+                            <div class="autocomplete-filter-inputSearch-container">
+                                <mat-icon>search</mat-icon>
+                                <input matInput type="text" name="inputSearch" placeholder="Tìm kiếm từ khóa ở đây"
+                                    formControlName="inputSearchControl" (keyup)="onEnterInputSearch()">
+                            </div>
+                            <button mat-icon-button type="button" (click)="clearInputSearch()">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+                    <!-- mat option format table result -->
+                    <mat-option *ngFor="let s of foodsFilter" value="s">
+                        {{s.value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
+        <div>
+            selectTriggerRow {{selectTriggerRow | json}}
+            timKiemTuongDoi {{timKiemTuongDoi }}
+        </div>
+    </article>
+    <article>
+        <h1>Table rescursive</h1>
+
+    </article>
+</section>

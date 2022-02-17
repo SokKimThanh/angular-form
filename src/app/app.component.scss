@@ -1,0 +1,32 @@
+.nav {
+  display: flex;
+  background: #fff;
+  box-shadow: 4px 2px 4px 2px black;
+  height: 32px;
+  padding: 0 16px;
+  align-items: center;
+  justify-content: flex-start;
+  &-item {
+    color: black;
+    background: black;
+    opacity: 0.5;
+    font-size: 1.3em;
+    margin: 8px;
+    padding: 4px;
+    border-radius: 4px;
+    transition: opacity 0.3s ease;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+  &-item:hover {
+    opacity: 1;
+    color: white;
+    transition: opacity 0.3s ease;
+  }
+}
+.wrapper {
+  padding: 0 32px;
+  margin-top: 64px;
+}

@@ -1,0 +1,50 @@
+<section>
+    <article>
+        <h1>Autocomplete Table Reactive form</h1>
+        <!-- form model -->
+        <form [formGroup]="autocompleteForm">
+            <h4>mat-select</h4>
+            <mat-label>Favorite Food</mat-label>
+            <mat-form-field class="mat-select-control" appearance="fill">
+                <mat-select formControlName="selectControl" name="food">
+                    <!-- show name format-->
+                    <mat-select-trigger> {{autocompleteForm.controls['selectControl'].value ?
+                        autocompleteForm.controls['selectControl'].value : ''}}
+                    </mat-select-trigger>
+                    <!-- input search -->
+                    <div class="autocomplete-filter">
+                        <mat-label>Input search</mat-label>
+                        <mat-form-field class="autocomplete-filter-inputSearch" appearance="fill">
+                            <div class="autocomplete-filter-inputSearch-container">
+                                <mat-icon>search</mat-icon>
+                                <input matInput type="text" name="inputSearch" placeholder="Tìm kiếm từ khóa ở đây"
+                                    formControlName="inputSearchControl">
+                                <button type="button" (click)="clearInputSearch()">
+                                    <mat-icon>close</mat-icon>
+                                </button>
+                            </div>
+                        </mat-form-field>
+                    </div>
+                    <!-- mat option format table result -->
+                    <table mat-table [dataSource]="dataSource">
+                        <thead>
+                            <tr>
+                                <th>value</th>
+                                <th>viewValue</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <mat-option *ngFor="let food of foodsFilter" [value]="food.value">
+                                <tr>
+                                    <td>{{food.value}}</td>
+                                    <td>{{food.viewValue}}</td>
+                                </tr>
+                            </mat-option>
+                        </tbody>
+                    </table>
+                </mat-select>
+            </mat-form-field>
+        </form>
+
+    </article>
+</section>

@@ -13,3 +13,13 @@ table {
 .filter {
   display: block;
 }
+.hovered {
+  background: rgb(97, 143, 111);
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+.highlighted {
+  background: rgb(27, 206, 81);
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}

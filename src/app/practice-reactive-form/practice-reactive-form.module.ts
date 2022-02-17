@@ -9,6 +9,7 @@ import { TableReactiveFormComponent } from './table-reactive-form/table-reactive
 import { FilteringTableComponent } from './filtering-table/filtering-table.component';
 import { FilterOnMatOptionComponent } from './filter-on-mat-option/filter-on-mat-option.component';
 import { MatSelectFilterModule } from 'mat-select-filter';
+import { MatSelectFormComponent } from './mat-select-form/mat-select-form.component';
 
 
 
@@ -18,7 +19,8 @@ import { MatSelectFilterModule } from 'mat-select-filter';
     AutocompleteReactiveFormComponent,
     TableReactiveFormComponent,
     FilteringTableComponent,
-    FilterOnMatOptionComponent
+    FilterOnMatOptionComponent,
+    MatSelectFormComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { MatSelectFilterModule } from 'mat-select-filter';
       { path: 'autocomplete-table', component: AutocompleteReactiveFormComponent },
       { path: 'table-reactive-form', component: TableReactiveFormComponent },
       { path: 'filtering-table', component: FilteringTableComponent },
-      { path: 'filter-on-mat-select', component: FilterOnMatOptionComponent }
+      { path: 'filter-on-mat-select', component: FilterOnMatOptionComponent },
+      { path: 'mat-select-form', component: MatSelectFormComponent }
     ]),
     MaterialModule,
     MatSelectFilterModule

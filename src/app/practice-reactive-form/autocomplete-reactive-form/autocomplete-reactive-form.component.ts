@@ -81,9 +81,12 @@ export class AutocompleteReactiveFormComponent implements OnInit {
     /* watching value changes when init component */
     this.autocompleteForm.get('inputSearchControl')?.valueChanges.subscribe(inputing => {
       if (!inputing) {
-        return;
+        this.timKiemTuongDoi = '';
+        this.foodsFilter = this.foods;
+        // return;
+      } else {
+        this.timKiemTuongDoi = inputing;
       }
-      this.timKiemTuongDoi = inputing;
     });
     this.autocompleteForm.get('selectControl')?.valueChanges.subscribe(selecting => {
       if (!selecting) {

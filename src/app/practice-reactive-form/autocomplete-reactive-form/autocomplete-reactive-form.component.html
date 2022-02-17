@@ -8,7 +8,10 @@
                 <mat-label>Favorite Food</mat-label>
                 <mat-select formControlName="selectControl" name="food">
                     <!-- show name format-->
-                    <mat-select-trigger> {{selectTriggerRow ? selectTriggerRow : ''}} </mat-select-trigger>
+                    <!-- <mat-select-trigger> {{selectTriggerRow ? selectTriggerRow : ''}} </mat-select-trigger> -->
+                    <!-- <mat-select-trigger> {{autocompleteForm.controls['selectControl'].value ?
+                        autocompleteForm.controls['selectControl'].value : ''}}
+                    </mat-select-trigger> -->
                     <!-- input search -->
                     <div class="autocomplete-filter">
                         <mat-form-field class="autocomplete-filter-inputSearch" appearance="fill">

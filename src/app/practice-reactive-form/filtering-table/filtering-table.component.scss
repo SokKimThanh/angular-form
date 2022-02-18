@@ -39,9 +39,15 @@
   }
   &-input-id {
     width: 30%;
+    .mat-form-field {
+      width: 100%;
+    }
   }
   &-input-name {
     width: 70%;
+    .mat-form-field {
+      width: 100%;
+    }
   }
 }
 .cdk-overlay-connected-position-bounding-box {

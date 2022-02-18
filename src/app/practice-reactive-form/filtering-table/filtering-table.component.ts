@@ -1,18 +1,19 @@
 import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSelect, MatSelectChange } from '@angular/material/select';
-import { People } from './element.interface';
+import { People, HienThiMotField } from './element.interface';
 import { PEOPLE } from './ELEMENT_DATA';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-filtering-table',
   templateUrl: './filtering-table.component.html',
   styleUrls: ['./filtering-table.component.scss']
 })
-export class FilteringTableComponent implements OnInit {
+export class FilteringTableComponent implements OnInit, AfterViewInit {
   /* ================================================================= */
   /* KHU VUC THIET LAP FORM MODEL */
   /* ================================================================= */
@@ -35,6 +36,10 @@ export class FilteringTableComponent implements OnInit {
   @Input() dataSource = new MatTableDataSource();
   selectedFilter!: People;
   @ViewChild('matSelect') matSelect!: MatSelect;
+  @ViewChild('filterId') filterId!: MatInput;
+  @ViewChild('filterName') filterName!: MatInput;
+  @Input() showInputNameOnly!: boolean;
+
   constructor(private fb: FormBuilder) {
     this.autocompleteForm = this.fb.group({
       /* <mat-select-trigger>
@@ -50,6 +55,10 @@ export class FilteringTableComponent implements OnInit {
     this.selection.changed.subscribe(s => {
       this.selectedFilter = s.source.selected[0];
     });
+    this.showInputNameOnly = this.showInputNameOnly ? this.showInputNameOnly : false;
+  }
+  ngAfterViewInit(): void {
+    
   }
   get selectedControl() {
     return this.autocompleteForm.get('selectedControl');
@@ -86,6 +95,7 @@ export class FilteringTableComponent implements OnInit {
     this.selectedControl?.patchValue(this.selectedFilter);
     this.inputShowIdFilterControl?.patchValue(this.selectedFilter.id);
     this.inputShowNameFilterControl?.patchValue(this.selectedFilter.name);
+    this.inputSearchControl?.reset();
     this.matSelect.close();
   }
 }

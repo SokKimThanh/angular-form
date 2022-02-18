@@ -35,12 +35,16 @@
             </tr>
         </table>
     </mat-select>
-    <mat-form-field class="form-filter-input-id" appearance="outline">
-        <mat-label>ID</mat-label>
-        <input matInput formControlName="inputShowIdFilterControl">
-    </mat-form-field>
-    <mat-form-field class="form-filter-input-name" appearance="outline">
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="inputShowNameFilterControl">
-    </mat-form-field>
+    <div class="form-filter-input-id" *ngIf="!showInputNameOnly">
+        <mat-form-field #filterId appearance="outline">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="inputShowIdFilterControl">
+        </mat-form-field>
+    </div>
+    <div class="form-filter-input-name">
+        <mat-form-field #filterName appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="inputShowNameFilterControl">
+        </mat-form-field>
+    </div>
 </form>

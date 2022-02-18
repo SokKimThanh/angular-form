@@ -7,3 +7,7 @@ export interface People {
     colour: string,
     pet: string
 }
+export interface HienThiMotField {
+    id: number,
+    name: string
+}

@@ -10,10 +10,12 @@ export interface Variables {
 export class FilterOnMatOptionComponent implements OnInit {
   variables: Variables[] = [];
   filteredVariables = [{}];
+  showInputNameOnly: boolean;
   constructor() {
     for (let i = 0; i <= 100; i++) {
       this.variables.push({ id: i, name: `option${i}` })
     }
+    this.showInputNameOnly = false;
   }
 
   ngOnInit(): void {

@@ -1,7 +1,7 @@
 import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { SelectionModel } from '@angular/cdk/collections';
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSelect, MatSelectChange } from '@angular/material/select';
 import { People, HienThiMotField } from './element.interface';
@@ -36,11 +36,10 @@ export class FilteringTableComponent implements OnInit, AfterViewInit {
   @Input() dataSource = new MatTableDataSource();
   selectedFilter!: People;
   @ViewChild('matSelect') matSelect!: MatSelect;
-  @ViewChild('filterId') filterId!: MatInput;
-  @ViewChild('filterName') filterName!: MatInput;
+  @ViewChild('filterDivName') filterDivName!: ElementRef;
   @Input() showInputNameOnly!: boolean;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private renderer: Renderer2) {
     this.autocompleteForm = this.fb.group({
       /* <mat-select-trigger>
       {{autocompleteForm.get('selectControl')?.value ? autocompleteForm.get('selectControl')?.value : ''}}
@@ -58,7 +57,9 @@ export class FilteringTableComponent implements OnInit, AfterViewInit {
     this.showInputNameOnly = this.showInputNameOnly ? this.showInputNameOnly : false;
   }
   ngAfterViewInit(): void {
-    
+    if (this.showInputNameOnly) {
+      this.renderer.setStyle(this.filterDivName.nativeElement, 'width', '100%');
+    }
   }
   get selectedControl() {
     return this.autocompleteForm.get('selectedControl');

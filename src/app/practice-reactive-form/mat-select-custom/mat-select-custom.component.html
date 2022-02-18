@@ -1,0 +1,18 @@
+<section>
+    <h1>Angular Mat-Select Text: Customize the Appearance </h1>
+    <article>
+        <h1>The Task Defined </h1>
+        <mat-form-field class="market-country-select">
+            <mat-label class="market-label">Country</mat-label>
+            <mat-select [value]="currentMarket.code" (selectionChange)="onMarketChange($event)">
+                <mat-select-trigger>
+                    {{currentMarket.name}}
+                    <span class="bold">{{currentMarket?.count | parenthesizePipe}}</span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let market of markets" [value]="market.code">
+                    {{market.name}} <span class="bold">{{market.count | parenthesizePipe}}</span>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </article>
+</section>

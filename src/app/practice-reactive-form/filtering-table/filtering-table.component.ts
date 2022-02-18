@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatSelect } from '@angular/material/select';
+import { MatSelect, MatSelectChange } from '@angular/material/select';
 import { People } from './element.interface';
 import { PEOPLE } from './ELEMENT_DATA';
 
@@ -33,15 +33,17 @@ export class FilteringTableComponent implements OnInit {
     return this._selection.has(value);
   }
   @Input() dataSource = new MatTableDataSource();
-  selectedFilter: People = { id: 0, name: '', colour: '', pet: '' };
+  selectedFilter!: People;
   @ViewChild('matSelect') matSelect!: MatSelect;
   constructor(private fb: FormBuilder) {
     this.autocompleteForm = this.fb.group({
       /* <mat-select-trigger>
       {{autocompleteForm.get('selectControl')?.value ? autocompleteForm.get('selectControl')?.value : ''}}
       </mat-select-trigger> */
-      selectControl: [this.peoples[0].name],
+      selectControl: null,
       inputSearchControl: '',
+      inputShowIdFilterControl: '',
+      inputShowNameFilterControl: ''
     })
     this.dataSource.data = this.peoples;
     /* watching selected row */
@@ -55,6 +57,12 @@ export class FilteringTableComponent implements OnInit {
   get inputSearchControl() {
     return this.autocompleteForm.get('inputSearchControl');
   }
+  get inputShowIdFilterControl() {
+    return this.autocompleteForm.get('inputShowIdFilterControl');
+  }
+  get inputShowNameFilterControl() {
+    return this.autocompleteForm.get('inputShowNameFilterControl');
+  }
 
   ngOnInit() {
     // listen for changes
@@ -64,22 +72,20 @@ export class FilteringTableComponent implements OnInit {
         this.dataSource.filter = enteringFilter;
       }
     );
+    this.selectedControl?.valueChanges.subscribe(
+      (selectedFilter: People) => {
+        this.selectedFilter = selectedFilter;
+      }
+    );
   }
   onSelectedRow(selectedRow: any): void {
     this.selection.clear();
     this.selection.toggle(selectedRow);
     this.outSelectedRow.emit(selectedRow);
     this.selectedFilter = selectedRow;
-    console.log(this.selectedFilter);
     this.selectedControl?.patchValue(this.selectedFilter);
+    this.inputShowIdFilterControl?.patchValue(this.selectedFilter.id);
+    this.inputShowNameFilterControl?.patchValue(this.selectedFilter.name);
     this.matSelect.close();
-  }
-  onDblclickSelectedRow(selectedRow: any, mouseEvent?: MouseEvent): void {
-    if (mouseEvent && mouseEvent.type === 'dblclick') {
-      this.selectedFilter = selectedRow;
-      console.log(this.selectedFilter);
-      this.selectedControl?.patchValue(this.selectedFilter);
-      this.matSelect.close();
-    }
   }
 }

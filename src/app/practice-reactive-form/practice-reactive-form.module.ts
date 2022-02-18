@@ -10,6 +10,8 @@ import { FilteringTableComponent } from './filtering-table/filtering-table.compo
 import { FilterOnMatOptionComponent } from './filter-on-mat-option/filter-on-mat-option.component';
 import { MatSelectFilterModule } from 'mat-select-filter';
 import { MatSelectFormComponent } from './mat-select-form/mat-select-form.component';
+import { MatSelectCustomComponent } from './mat-select-custom/mat-select-custom.component';
+import { ParenthesizePipePipe } from './mat-select-custom/parenthesize-pipe.pipe';
 
 
 
@@ -20,7 +22,9 @@ import { MatSelectFormComponent } from './mat-select-form/mat-select-form.compon
     TableReactiveFormComponent,
     FilteringTableComponent,
     FilterOnMatOptionComponent,
-    MatSelectFormComponent
+    MatSelectFormComponent,
+    MatSelectCustomComponent,
+    ParenthesizePipePipe
   ],
   imports: [
     CommonModule,
@@ -32,7 +36,8 @@ import { MatSelectFormComponent } from './mat-select-form/mat-select-form.compon
       { path: 'table-reactive-form', component: TableReactiveFormComponent },
       { path: 'filtering-table', component: FilteringTableComponent },
       { path: 'filter-on-mat-select', component: FilterOnMatOptionComponent },
-      { path: 'mat-select-form', component: MatSelectFormComponent }
+      { path: 'mat-select-form', component: MatSelectFormComponent },
+      { path: 'mat-select-custom', component: MatSelectCustomComponent },
     ]),
     MaterialModule,
     MatSelectFilterModule

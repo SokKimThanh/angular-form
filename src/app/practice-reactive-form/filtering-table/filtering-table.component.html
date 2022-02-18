@@ -1,13 +1,9 @@
 <p>filtering-table works!</p>
-<form [formGroup]="autocompleteForm">
-    <mat-select #matSelect formControlName="selectControl">
-        <mat-select-trigger>
-            {{selectedControl?.value ? selectedControl?.value[0] : ''}}
-        </mat-select-trigger>
-        <table mat-table [dataSource]="dataSource" #table>
+<form class="form-filter" [formGroup]="autocompleteForm">
+    <mat-select class="form-filter-select" #matSelect formControlName="selectControl" [value]="selectedFilter">
+        <table class="form-filter-select-table" mat-table [dataSource]="dataSource" #table>
             <ng-container *ngFor="let col of tableCols; let i = index" [matColumnDef]="col.key">
-                <mat-option>None</mat-option>
-                <mat-option>
+                <mat-option [value]="selectedFilter">
                     <ng-container>
                         <th mat-header-cell *matHeaderCellDef>
                             <mat-form-field class="filter">
@@ -23,10 +19,10 @@
                         </ng-container>
                     </td>
                 </mat-option>
+
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="keys; sticky: true;" class="mat-header-row"></tr>
             <tr mat-row *matRowDef="let row; columns: keys;" (click)="onSelectedRow(row)"
-                (dblclick)="onDblclickSelectedRow(row, $event)"
                 [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
                 (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"
                 [class.selected]="row === selectedRow">
@@ -39,4 +35,12 @@
             </tr>
         </table>
     </mat-select>
+    <mat-form-field class="form-filter-input-id" appearance="outline">
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="inputShowIdFilterControl">
+    </mat-form-field>
+    <mat-form-field class="form-filter-input-name" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="inputShowNameFilterControl">
+    </mat-form-field>
 </form>

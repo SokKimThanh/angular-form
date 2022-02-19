@@ -58,7 +58,6 @@ export class FilteringTableComponent implements OnInit, AfterViewInit {
     this.showInputNameOnly = this.showInputNameOnly ? this.showInputNameOnly : false;
   }
   ngAfterViewInit(): void {
-    /* styling input search */
     if (this.showInputNameOnly) {
       this.renderer.setStyle(this.filterDivName.nativeElement, 'width', '100%');
     }
@@ -90,21 +89,6 @@ export class FilteringTableComponent implements OnInit, AfterViewInit {
     this.selectedControl?.valueChanges.subscribe(
       (selectedFilter: People) => {
         this.selectedFilter = selectedFilter;
-        // console.log(` this.matSelect.focused ${this.matSelect.focused}`)
-      }
-    );
-    this.inputShowNameFilterControl?.valueChanges.pipe(
-      debounceTime(1000)
-    ).subscribe(
-      (enteringFilter: string) => {
-        this.inputFilterNoResult = enteringFilter;
-        this.dataSource.filter = enteringFilter;
-      }
-    );
-    this.inputShowIdFilterControl?.valueChanges.subscribe(
-      (enteringFilter: string) => {
-        this.inputFilterNoResult = enteringFilter;
-        this.dataSource.filter = enteringFilter;
       }
     );
   }

@@ -12,6 +12,7 @@ import { MatSelectFilterModule } from 'mat-select-filter';
 import { MatSelectFormComponent } from './mat-select-form/mat-select-form.component';
 import { MatSelectCustomComponent } from './mat-select-custom/mat-select-custom.component';
 import { ParenthesizePipePipe } from './mat-select-custom/parenthesize-pipe.pipe';
+import { FilterProgressBarComponent } from './filter-progress-bar/filter-progress-bar.component';
 
 
 
@@ -24,7 +25,8 @@ import { ParenthesizePipePipe } from './mat-select-custom/parenthesize-pipe.pipe
     FilterOnMatOptionComponent,
     MatSelectFormComponent,
     MatSelectCustomComponent,
-    ParenthesizePipePipe
+    ParenthesizePipePipe,
+    FilterProgressBarComponent
   ],
   imports: [
     CommonModule,
@@ -38,6 +40,7 @@ import { ParenthesizePipePipe } from './mat-select-custom/parenthesize-pipe.pipe
       { path: 'filter-on-mat-select', component: FilterOnMatOptionComponent },
       { path: 'mat-select-form', component: MatSelectFormComponent },
       { path: 'mat-select-custom', component: MatSelectCustomComponent },
+      { path: 'filter-progress-bar', component: FilterProgressBarComponent },
     ]),
     MaterialModule,
     MatSelectFilterModule

@@ -15,7 +15,7 @@ export class FilterOnMatOptionComponent implements OnInit {
     for (let i = 0; i <= 100; i++) {
       this.variables.push({ id: i, name: `option${i}` })
     }
-    this.showInputNameOnly = false;
+    this.showInputNameOnly = true;
   }
 
   ngOnInit(): void {

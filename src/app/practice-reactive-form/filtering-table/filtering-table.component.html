@@ -6,10 +6,16 @@
                 <mat-option [value]="selectedFilter">
                     <ng-container>
                         <th mat-header-cell *matHeaderCellDef>
-                            <mat-form-field class="filter">
-                                <mat-label><span>{{tableCols[i]["display"]}}</span></mat-label>
-                                <input matInput formControlName='inputSearchControl'>
-                            </mat-form-field>
+                            <div class="form-filter-select-table-filter">
+                                <mat-icon>search</mat-icon>
+                                <mat-form-field>
+                                    <mat-label><span>{{tableCols[i]["display"]}}</span></mat-label>
+                                    <input matInput formControlName='inputSearchControl'>
+                                </mat-form-field>
+                                <button mat-icon-button (click)="clear()" *ngIf="isFilteringInputSearch">
+                                    <mat-icon>clear</mat-icon>
+                                </button>
+                            </div>
                         </th>
                     </ng-container>
                     <td mat-cell *matCellDef="let element; let indexCell = index">

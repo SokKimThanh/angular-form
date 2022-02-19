@@ -1,8 +1,8 @@
 .nav {
   display: flex;
+  flex-flow: row wrap;
   background: #fff;
   box-shadow: 4px 2px 4px 2px black;
-  height: 32px;
   padding: 0 16px;
   align-items: center;
   justify-content: flex-start;

@@ -7,6 +7,7 @@ import { MatSelect, MatSelectChange } from '@angular/material/select';
 import { People, HienThiMotField } from './element.interface';
 import { PEOPLE } from './ELEMENT_DATA';
 import { MatInput } from '@angular/material/input';
+import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-filtering-table',
@@ -38,7 +39,7 @@ export class FilteringTableComponent implements OnInit, AfterViewInit {
   @ViewChild('matSelect') matSelect!: MatSelect;
   @ViewChild('filterDivName') filterDivName!: ElementRef;
   @Input() showInputNameOnly!: boolean;
-
+  isFilteringInputSearch!: boolean;
   constructor(private fb: FormBuilder, private renderer: Renderer2) {
     this.autocompleteForm = this.fb.group({
       /* <mat-select-trigger>
@@ -57,6 +58,7 @@ export class FilteringTableComponent implements OnInit, AfterViewInit {
     this.showInputNameOnly = this.showInputNameOnly ? this.showInputNameOnly : false;
   }
   ngAfterViewInit(): void {
+    /* styling input search */
     if (this.showInputNameOnly) {
       this.renderer.setStyle(this.filterDivName.nativeElement, 'width', '100%');
     }
@@ -76,8 +78,11 @@ export class FilteringTableComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     // listen for changes
-    this.inputSearchControl?.valueChanges.subscribe(
+    this.inputSearchControl?.valueChanges.pipe(
+      debounceTime(1000)
+    ).subscribe(
       (enteringFilter: string) => {
+        this.isFilteringInputSearch = enteringFilter ? true : false;
         this.inputFilterNoResult = enteringFilter;
         this.dataSource.filter = enteringFilter;
       }
@@ -85,6 +90,21 @@ export class FilteringTableComponent implements OnInit, AfterViewInit {
     this.selectedControl?.valueChanges.subscribe(
       (selectedFilter: People) => {
         this.selectedFilter = selectedFilter;
+        // console.log(` this.matSelect.focused ${this.matSelect.focused}`)
+      }
+    );
+    this.inputShowNameFilterControl?.valueChanges.pipe(
+      debounceTime(1000)
+    ).subscribe(
+      (enteringFilter: string) => {
+        this.inputFilterNoResult = enteringFilter;
+        this.dataSource.filter = enteringFilter;
+      }
+    );
+    this.inputShowIdFilterControl?.valueChanges.subscribe(
+      (enteringFilter: string) => {
+        this.inputFilterNoResult = enteringFilter;
+        this.dataSource.filter = enteringFilter;
       }
     );
   }
@@ -98,5 +118,8 @@ export class FilteringTableComponent implements OnInit, AfterViewInit {
     this.inputShowNameFilterControl?.patchValue(this.selectedFilter.name);
     this.inputSearchControl?.reset();
     this.matSelect.close();
+  }
+  clear(): void {
+    this.autocompleteForm.reset();
   }
 }

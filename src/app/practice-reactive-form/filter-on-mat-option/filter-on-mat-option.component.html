@@ -7,8 +7,12 @@
         <mat-option *ngFor="let variable of filteredVariables" [value]="variable.name">
             {{variable.name}}
         </mat-option>
-     </mat-select>
+    </mat-select>
 </mat-form-field>
 
 
-<app-filtering-table [showInputNameOnly]="showInputNameOnly"></app-filtering-table>
+<app-filtering-table [showInputNameOnly]="showInputNameOnly" (outSelectedRow)="outSelectedRow($event)">
+</app-filtering-table>
+<app-overlay-effect [showInputNameOnly]="showInputNameOnly" [dataSource]="newDataSouce" [cols]="cols"
+    (outSelectedRow)="outSelectedRow($event)">
+</app-overlay-effect>

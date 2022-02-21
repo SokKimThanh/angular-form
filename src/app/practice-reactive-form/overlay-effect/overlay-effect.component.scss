@@ -2,6 +2,7 @@
   background: rgb(97, 143, 111);
   opacity: 0.5;
   transition: opacity 0.3s ease;
+  cursor: pointer;
 }
 .highlighted {
   background: rgb(27, 206, 81);
@@ -30,10 +31,17 @@
     flex-flow: row;
     justify-content: center;
     border-radius: 10px;
+    /* ===================================== */
+    /* table overlay */
+    /* ===================================== */
     &-table {
       width: 100%;
-      transform: translate(-24%, 0);
+      transform: translate(0);
       overflow: auto;
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+      height: 300px;
       &-filter {
         display: flex !important;
         align-items: center !important;
@@ -41,6 +49,11 @@
         &-input-search {
           display: flex;
         }
+      }
+      & tbody {
+        display: table;
+        width: 100%;
+        height: 300px;
       }
     }
   }
@@ -62,9 +75,24 @@
       position: absolute;
       top: 12%;
       right: 0;
+      color: #fff;
     }
   }
-  &-overlay-pane-cdk {
-    transform: translate(0);
+
+  .mat-card-table-turnon-overflow {
+    overflow: auto;
+    max-height: 550px;
+    @media only screen and (max-width: 2560px) {
+      max-height: 80vh !important;
+    }
+    @media only screen and (max-width: 1440px) {
+      max-height: 75vh !important;
+    }
+    @media only screen and (max-width: 1366px) {
+      max-height: 70vh !important;
+    }
+    @media only screen and (max-width: 1024px) {
+      max-height: 550px !important;
+    }
   }
 }

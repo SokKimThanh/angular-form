@@ -1,8 +1,7 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { debounceTime } from 'rxjs';
 import { People } from '../filtering-table/element.interface';
@@ -14,7 +13,7 @@ import { OverLayEffectTableColumn, OverlayEffectTableInput, OverlayEffectTablePa
   templateUrl: './overlay-effect.component.html',
   styleUrls: ['./overlay-effect.component.scss']
 })
-export class OverlayEffectComponent implements OnInit {
+export class OverlayEffectComponent implements OnInit, AfterViewInit {
   isOpen = false;
   /* ================================================================= */
   /* KHU VUC THIET LAP FORM MODEL */
@@ -24,12 +23,12 @@ export class OverlayEffectComponent implements OnInit {
   /* ================================================================= */
   /* KHU VUC THIET INPUT OUTPUT */
   /* ================================================================= */
-  @Input() dataSource = new MatTableDataSource();
+  @Input() dataSource = new MatTableDataSource<People>(this.peoples);
   @Input() pageEvent!: PageEvent;
   @Input() showPaginator: OverlayEffectTablePaginator = {
-    pageIndex: 0, pageSize: 10,
+    pageIndex: 0, pageSize: null,
     pageSizeOptions: [5, 10, 25, 100],
-    length: 100,
+    length: null,
   };
   @Input() showInputNameOnly: OverlayEffectTableInput = {
     isShowInputNameOnly: null,
@@ -48,7 +47,7 @@ export class OverlayEffectComponent implements OnInit {
   @Output() pageEventEmitter = new EventEmitter<PageEvent>();
 
   @ViewChild('filterDivName') filterDivName!: ElementRef;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild('scheduledOrdersPaginators') paginator!: MatPaginator;
   /* ================================================================= */
   /* KHU VUC THIET VARIABLE HTML */
   /* ================================================================= */
@@ -68,20 +67,19 @@ export class OverlayEffectComponent implements OnInit {
       inputShowIdFilterControl: '',
       inputShowNameFilterControl: ''
     })
-    this.dataSource.data = this.peoples;
     /* watching selected row */
     this.selection.changed.subscribe(s => {
       this.selectedFilter = s.source.selected[0];
     });
     this.showInputNameOnly.isShowInputNameOnly = this.showInputNameOnly.isShowInputNameOnly ? this.showInputNameOnly.isShowInputNameOnly : false;
-  }
-  ngAfterViewInit(): void {
-    if (this.showInputNameOnly) {
-      this.renderer.setStyle(this.filterDivName.nativeElement, 'width', '100%');
-    }
     if (this.dataSource) {
-      this.dataSource.paginator = this.paginator;
-      this.pageEvent = this.paginator;
+      if (this.paginator) {
+        this.dataSource.paginator = this.paginator;
+      } else {
+        console.log('no paginator, no init paginator');
+      }
+    } else {
+      console.log('no datasource, no init paginator');
     }
   }
   get inputSearchControl() {
@@ -105,6 +103,20 @@ export class OverlayEffectComponent implements OnInit {
         this.dataSource.filter = enteringFilter;
       }
     );
+  }
+  ngAfterViewInit(): void {
+    if (this.showInputNameOnly) {
+      this.renderer.setStyle(this.filterDivName.nativeElement, 'width', '100%');
+    }
+    if (this.dataSource) {
+      if (this.paginator) {
+        this.dataSource.paginator = this.paginator;
+      } else {
+        console.log('no paginator, no init paginator');
+      }
+    } else {
+      console.log('no datasource, no init paginator');
+    }
   }
   onSelectedRow(selectedRow: any): void {
     this.selection.clear();

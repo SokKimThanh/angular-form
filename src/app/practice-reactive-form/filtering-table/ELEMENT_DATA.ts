@@ -30,5 +30,155 @@ export const PEOPLE: People[] = [
         id: 4,
         colour: 'Orange',
         pet: 'Dog'
-    }
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
+    {
+        name: 'Megan',
+        id: 4,
+        colour: 'Orange',
+        pet: 'Dog'
+    },
 ];

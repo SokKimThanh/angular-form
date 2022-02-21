@@ -41,7 +41,7 @@ import { OverlayEffectComponent } from './overlay-effect/overlay-effect.componen
       { path: 'autocomplete-table', component: AutocompleteReactiveFormComponent },
       { path: 'table-reactive-form', component: TableReactiveFormComponent },
       { path: 'filtering-table', component: FilteringTableComponent },
-      { path: 'filter-on-mat-select', component: FilterOnMatOptionComponent },
+      { path: 'filter-on-mat-option', component: FilterOnMatOptionComponent },
       { path: 'mat-select-form', component: MatSelectFormComponent },
       { path: 'mat-select-custom', component: MatSelectCustomComponent },
       { path: 'filter-progress-bar', component: FilterProgressBarComponent },

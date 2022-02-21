@@ -1,3 +1,4 @@
+import { OverlayEffectPaginatorComponent } from './overlay-effect-paginator/overlay-effect-paginator.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PracticeReactiveFormComponent } from './practice-reactive-form.component';
@@ -28,7 +29,8 @@ import { OverlayEffectComponent } from './overlay-effect/overlay-effect.componen
     MatSelectCustomComponent,
     ParenthesizePipePipe,
     FilterProgressBarComponent,
-    OverlayEffectComponent
+    OverlayEffectComponent,
+    OverlayEffectPaginatorComponent
   ],
   imports: [
     CommonModule,
@@ -44,6 +46,7 @@ import { OverlayEffectComponent } from './overlay-effect/overlay-effect.componen
       { path: 'mat-select-custom', component: MatSelectCustomComponent },
       { path: 'filter-progress-bar', component: FilterProgressBarComponent },
       { path: 'overlay-effect', component: OverlayEffectComponent },
+      { path: 'overlay-effect-paginator', component: OverlayEffectPaginatorComponent },
     ]),
     MaterialModule,
     MatSelectFilterModule

@@ -1,8 +1,8 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { PageEvent } from '@angular/material/paginator';
-import { MatSelect } from '@angular/material/select';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { debounceTime } from 'rxjs';
 import { People } from '../filtering-table/element.interface';
@@ -27,9 +27,9 @@ export class OverlayEffectComponent implements OnInit {
   @Input() dataSource = new MatTableDataSource();
   @Input() pageEvent!: PageEvent;
   @Input() showPaginator: OverlayEffectTablePaginator = {
-    pageIndex: 0, pageSize: this.dataSource.data.length,
-    pageSizeOptions: ['20', '50', '100', '500', '1000'],
-    totalItems: this.dataSource.data.length,
+    pageIndex: 0, pageSize: 10,
+    pageSizeOptions: [5, 10, 25, 100],
+    length: 100,
   };
   @Input() showInputNameOnly: OverlayEffectTableInput = {
     isShowInputNameOnly: null,
@@ -48,8 +48,7 @@ export class OverlayEffectComponent implements OnInit {
   @Output() pageEventEmitter = new EventEmitter<PageEvent>();
 
   @ViewChild('filterDivName') filterDivName!: ElementRef;
-  @ViewChild('matCardTable') matCardTable: any;
-
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   /* ================================================================= */
   /* KHU VUC THIET VARIABLE HTML */
   /* ================================================================= */
@@ -79,6 +78,10 @@ export class OverlayEffectComponent implements OnInit {
   ngAfterViewInit(): void {
     if (this.showInputNameOnly) {
       this.renderer.setStyle(this.filterDivName.nativeElement, 'width', '100%');
+    }
+    if (this.dataSource) {
+      this.dataSource.paginator = this.paginator;
+      this.pageEvent = this.paginator;
     }
   }
   get inputSearchControl() {
@@ -115,19 +118,5 @@ export class OverlayEffectComponent implements OnInit {
   }
   clear(): void {
     this.autocompleteForm.reset();
-  }
-  emitPaginationPage(pageEvent: PageEvent): void {
-    this.pageEventEmitter.emit(pageEvent);
-    if (pageEvent) {
-      if (this.matCardTable) {
-        const matCardTable = this.matCardTable.nativeElement;
-        const classes = matCardTable.classList;
-        if (pageEvent.pageSize > 20) {
-          classes.add('mat-card-table-turnon-overflow');
-        } else {
-          classes.remove('mat-card-table-turnon-overflow');
-        }
-      }
-    }
   }
 }

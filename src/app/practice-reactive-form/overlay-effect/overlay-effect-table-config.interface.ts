@@ -18,8 +18,8 @@ export interface OverlayEffectTableInput {
     input: OverLayEffectTableColumn[];
 }
 export interface OverlayEffectTablePaginator {
-    totalItems: number;
-    pageSize: number;
+    length: number;
+    pageSize: number | null;
     pageIndex: number;
-    pageSizeOptions: string[];
+    pageSizeOptions: number[];
 }

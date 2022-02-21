@@ -13,6 +13,7 @@ import { MatSelectFormComponent } from './mat-select-form/mat-select-form.compon
 import { MatSelectCustomComponent } from './mat-select-custom/mat-select-custom.component';
 import { ParenthesizePipePipe } from './mat-select-custom/parenthesize-pipe.pipe';
 import { FilterProgressBarComponent } from './filter-progress-bar/filter-progress-bar.component';
+import { OverlayEffectComponent } from './overlay-effect/overlay-effect.component';
 
 
 
@@ -26,7 +27,8 @@ import { FilterProgressBarComponent } from './filter-progress-bar/filter-progres
     MatSelectFormComponent,
     MatSelectCustomComponent,
     ParenthesizePipePipe,
-    FilterProgressBarComponent
+    FilterProgressBarComponent,
+    OverlayEffectComponent
   ],
   imports: [
     CommonModule,
@@ -41,6 +43,7 @@ import { FilterProgressBarComponent } from './filter-progress-bar/filter-progres
       { path: 'mat-select-form', component: MatSelectFormComponent },
       { path: 'mat-select-custom', component: MatSelectCustomComponent },
       { path: 'filter-progress-bar', component: FilterProgressBarComponent },
+      { path: 'overlay-effect', component: OverlayEffectComponent },
     ]),
     MaterialModule,
     MatSelectFilterModule

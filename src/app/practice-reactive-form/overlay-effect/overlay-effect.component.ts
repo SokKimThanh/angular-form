@@ -23,7 +23,7 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
   /* ================================================================= */
   /* KHU VUC THIET INPUT OUTPUT */
   /* ================================================================= */
-  @Input() dataSource = new MatTableDataSource<People>(this.peoples);
+  @Input() dataSource = new MatTableDataSource();
   @Input() pageEvent!: PageEvent;
   @Input() showPaginator: OverlayEffectTablePaginator = {
     pageIndex: 0,
@@ -73,15 +73,6 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
       this.selectedFilter = s.source.selected[0];
     });
     this.showInput.isShowInputNameOnly = this.showInput.isShowInputNameOnly ? this.showInput.isShowInputNameOnly : false;
-    if (this.dataSource) {
-      if (this.paginator) {
-        this.dataSource.paginator = this.paginator;
-      } else {
-        console.log('no paginator, no init paginator');
-      }
-    } else {
-      console.log('no datasource, no init paginator');
-    }
   }
   get inputSearchControl() {
     return this.autocompleteForm.get('inputSearchControl');
@@ -131,5 +122,8 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
   }
   clear(): void {
     this.autocompleteForm.reset();
+  }
+  loadingOverlayFilteringTable(): void {
+    this.isOpen = !this.isOpen;
   }
 }

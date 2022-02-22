@@ -22,13 +22,13 @@ export class OverlayEffectTableComponent implements OnInit, AfterViewInit {
   @Output('outSelectedRow') outSelectedRow = new EventEmitter<any>();
   @Output() pageEventEmitter = new EventEmitter<PageEvent>();
 
-  @ViewChild('paginator') paginator!: MatPaginator;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   /* ================================================================= */
   /* KHU VUC THIET VARIABLE HTML */
   /* ================================================================= */
   get keys() { return this.tableCols.map(({ key }) => key); }
   selection = new SelectionModel<any>(true, []);
-  inputFilterNoResult!: string;
+  @Input() inputFilterNoResult!: string;
   private _selection = new Set<any>();
   isSelected(value: any): boolean {
     return this._selection.has(value);

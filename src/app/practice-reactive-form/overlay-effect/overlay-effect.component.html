@@ -19,21 +19,22 @@
             </div>
             <!-- This template displays the overlay content and is connected to the button -->
             <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOpen">
-                <mat-card>
-                    <mat-card-title>
+                <mat-card class="form-filter-card-overlay">
+                    <mat-card-title class="form-filter-card-overlay-title">
                         <mat-form-field class="input-search">
                             <mat-icon matPrefix>search</mat-icon>
                             <mat-label> Tìm kiếm </mat-label>
-                            <input matInput formControlName='inputSearchControl'>
+                            <input matInput #inputSearch cdkFocusInitial formControlName='inputSearchControl'>
                             <button matSuffix mat-icon-button (click)="clear()" *ngIf="isFilteringInputSearch"
                                 matTooltip="Nhập lại">
                                 <mat-icon>clear</mat-icon>
                             </button>
                         </mat-form-field>
                     </mat-card-title>
-                    <mat-card-content>
+                    <mat-card-content class="form-filter-card-overlay-content">
                         <app-overlay-effect-table [dataSource]="dataSource" [cols]="tableCols"
-                            [inputFilterNoResult]="inputFilterNoResult" (outSelectedRow)="onSelectedRow($event)">
+                            [inputFilterNoResult]="inputFilterNoResult" (outSelectedRow)="onSelectedRow($event)"
+                            [showPaginator]="showPaginator">
                         </app-overlay-effect-table>
                     </mat-card-content>
                 </mat-card>

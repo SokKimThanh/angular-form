@@ -1,7 +1,7 @@
-<mat-card>
+<mat-card class="card-overlay-table">
     <mat-card-content>
         <div class="table-wrapper">
-            <div class="table-scroll">
+            <div #matCardTable class="table-scroll">
                 <table mat-table [dataSource]="dataSource">
                     <ng-container *ngFor="let col of tableCols; let i = index" [matColumnDef]="col.key">
                         <ng-container>
@@ -23,7 +23,7 @@
                         [class.selected]="row === selectedRow">
                     </tr>
                     <!-- Row shown when there is no matching data.-->
-                    <tr class="mat-row mat-row-search" *matNoDataRow>
+                    <tr *matNoDataRow>
                         <td class="mat-cell" colspan="999">Không có dữ liệu nào phù hợp với bộ lọc
                             <span class="filter-list-no-result">"{{inputFilterNoResult}}"</span>
                         </td>
@@ -33,7 +33,10 @@
         </div>
     </mat-card-content>
     <mat-card-actions>
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+        <mat-paginator class="paginator" [length]="showPaginator.length" [pageSize]="showPaginator.pageSize"
+            [pageIndex]="showPaginator.pageIndex"
+            [pageSizeOptions]="showPaginator.pageSizeOptions? showPaginator.pageSizeOptions: [20, 100, 200, 500, 1000]"
+            showFirstLastButtons (page)="emitPaginationPage($event)">
         </mat-paginator>
     </mat-card-actions>
 </mat-card>

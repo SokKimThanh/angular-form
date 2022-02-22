@@ -1,6 +1,7 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { MatInput } from '@angular/material/input';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { debounceTime } from 'rxjs';
@@ -49,6 +50,7 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
 
   @ViewChild('filterDivName') filterDivName!: ElementRef;
   @ViewChild('scheduledOrdersPaginators') paginator!: MatPaginator;
+  @ViewChild('inputSearch') inputSearch!: MatInput;
   /* ================================================================= */
   /* KHU VUC THIET VARIABLE HTML */
   /* ================================================================= */

@@ -11,14 +11,42 @@
 }
 .filter-list-no-result {
   color: #c2185b;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .table-wrapper {
   position: relative;
 }
 .table-scroll {
-  height: 300px;
   overflow: auto;
 }
 .table-wrapper table {
   width: 100%;
+}
+.mat-row-search {
+  .table-cell {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+.card-overlay-table {
+  width: 100vw;
+}
+.mat-card-table-turnon-overflow {
+  overflow: auto;
+  max-height: 550px;
+  @media only screen and (max-width: 2560px) {
+    max-height: 80vh !important;
+  }
+  @media only screen and (max-width: 1440px) {
+    max-height: 75vh !important;
+  }
+  @media only screen and (max-width: 1366px) {
+    max-height: 70vh !important;
+  }
+  @media only screen and (max-width: 1024px) {
+    max-height: 550px !important;
+  }
 }

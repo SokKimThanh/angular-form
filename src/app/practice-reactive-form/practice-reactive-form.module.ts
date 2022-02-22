@@ -1,3 +1,4 @@
+import { OverlayEffectTableComponent } from './overlay-effect-table/overlay-effect-table.component';
 import { OverlayEffectPaginatorComponent } from './overlay-effect-paginator/overlay-effect-paginator.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,9 +16,7 @@ import { MatSelectCustomComponent } from './mat-select-custom/mat-select-custom.
 import { ParenthesizePipePipe } from './mat-select-custom/parenthesize-pipe.pipe';
 import { FilterProgressBarComponent } from './filter-progress-bar/filter-progress-bar.component';
 import { OverlayEffectComponent } from './overlay-effect/overlay-effect.component';
-
-
-
+import { DesignModule } from '../design/design.module';
 @NgModule({
   declarations: [
     PracticeReactiveFormComponent,
@@ -30,7 +29,8 @@ import { OverlayEffectComponent } from './overlay-effect/overlay-effect.componen
     ParenthesizePipePipe,
     FilterProgressBarComponent,
     OverlayEffectComponent,
-    OverlayEffectPaginatorComponent
+    OverlayEffectPaginatorComponent,
+    OverlayEffectTableComponent,
   ],
   imports: [
     CommonModule,
@@ -47,9 +47,11 @@ import { OverlayEffectComponent } from './overlay-effect/overlay-effect.componen
       { path: 'filter-progress-bar', component: FilterProgressBarComponent },
       { path: 'overlay-effect', component: OverlayEffectComponent },
       { path: 'overlay-effect-paginator', component: OverlayEffectPaginatorComponent },
+      { path: 'overlay-effect-table', component: OverlayEffectTableComponent },
     ]),
     MaterialModule,
-    MatSelectFilterModule
+    MatSelectFilterModule,
+    DesignModule
   ]
 })
 export class PracticeReactiveFormModule { }

@@ -26,11 +26,12 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
   @Input() dataSource = new MatTableDataSource<People>(this.peoples);
   @Input() pageEvent!: PageEvent;
   @Input() showPaginator: OverlayEffectTablePaginator = {
-    pageIndex: 0, pageSize: null,
+    pageIndex: 0,
+    pageSize: null,
     pageSizeOptions: [5, 10, 25, 100],
     length: null,
   };
-  @Input() showInputNameOnly: OverlayEffectTableInput = {
+  @Input() showInput: OverlayEffectTableInput = {
     isShowInputNameOnly: null,
     input: [
       { key: 'id', display: 'Nhập mã' },
@@ -52,7 +53,7 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
   /* KHU VUC THIET VARIABLE HTML */
   /* ================================================================= */
   get keys() { return this.tableCols.map(({ key }) => key); }
-  get keysOverlayEffect() { return this.showInputNameOnly.input.map(({ key }) => key); }
+  get keysOverlayEffect() { return this.showInput.input.map(({ key }) => key); }
   selection = new SelectionModel<any>(true, []);
   inputFilterNoResult!: string;
   private _selection = new Set<any>();
@@ -71,7 +72,7 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
     this.selection.changed.subscribe(s => {
       this.selectedFilter = s.source.selected[0];
     });
-    this.showInputNameOnly.isShowInputNameOnly = this.showInputNameOnly.isShowInputNameOnly ? this.showInputNameOnly.isShowInputNameOnly : false;
+    this.showInput.isShowInputNameOnly = this.showInput.isShowInputNameOnly ? this.showInput.isShowInputNameOnly : false;
     if (this.dataSource) {
       if (this.paginator) {
         this.dataSource.paginator = this.paginator;
@@ -105,7 +106,7 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
     );
   }
   ngAfterViewInit(): void {
-    if (this.showInputNameOnly) {
+    if (this.showInput) {
       this.renderer.setStyle(this.filterDivName.nativeElement, 'width', '100%');
     }
     if (this.dataSource) {

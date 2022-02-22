@@ -1,0 +1,226 @@
+<div *ngIf="screenlistguide">
+    <mat-expansion-panel class="none-template-property" (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false" *ngIf="screenlistguide.button as button">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <code class="codee">{{button.codeObjectName}}</code>
+            </mat-panel-title>
+            <mat-panel-description>
+                <p class="color-red">Chưa có <code
+                        class="codee">[{{button.codeObjectName}}]="{{button.codeObjectName}}"</code>
+                    bên ngoài
+                    template
+                    <code class="codee"><{{button.codeTagName}}></code>
+                </p>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="none-template-property-usage">
+            <p>{{'Ví dụ cách gọi và cách cài đặt dữ liệu:'|uppercase}}</p>
+            <u>Cách gọi:</u>
+            <div class="none-template-property-code">
+                <code class="codee">{{button.codeExample}}</code>
+            </div>
+            <div class="none-template-property-file">
+                <u>Cách cài đặt dữ liệu:</u>
+                <p>Ví dụ như bên trong file <code>{{button.codeFileName}}</code> thì cài đặt dữ liệu
+                    <code>{{button.codeObjectName}}</code>
+                    trong onInit và hàm sự kiện <code>EventEmitter</code> tương ứng.
+                </p>
+                <ul class="none-template-property-file-list">
+                    <li>
+                        <u href="">Bước cài <code>{{button.codeObjectName}}</code></u>
+                    </li>
+                    <li>
+                        <div class="none-template-property-file-name">
+                            {{button.codeFileName}}
+                        </div>
+                        <div class="none-template-property-code">
+                            <code class="codee">{{button.codeExampleFile}}</code>
+                            <div class="none-template-property-code">
+                                <p>Viết tắt</p>
+                                <code class="codee">{{button.codeExampleFile2}}</code>
+                            </div>
+                        </div>
+                    </li>
+                    <li><u href="">Bước cài <code>{{button.codeObjectEventName}}</code></u></li>
+                    <li>Ví dụ: <code>(buttonEventEmitter)="addingHSSK($event)"</code></li>
+                    <li>Ví dụ: <code>(buttonEventEmitter)="addThuocTanDuoc($event)"</code></li>
+                </ul>
+            </div>
+        </div>
+    </mat-expansion-panel>
+    <div class="none-template-property" *ngIf="screenlistguide.selection as selection">
+        <p class="color-red">Chưa có <code
+                class="codee">[{{selection.codeObjectName}}]="{{selection.codeObjectName}}"</code>
+            bên ngoài template <code class="codee"> {{selection.codeTagName}} </code>
+        </p>
+        <div class="none-template-property-usage">
+            <p>{{'Ví dụ cách gọi và cách cài đặt dữ liệu:'|uppercase}}</p>
+            <u>Cách gọi:</u>
+            <div class="none-template-property-code">
+                <code class="codee">{{selection.codeExample}}</code>
+            </div>
+            <div class="none-template-property-file">
+                <u>Cách cài đặt dữ liệu:</u>
+                <p>Ví dụ như bên trong file <code>{{selection.codeFileName}}</code> thì cài đặt dữ liệu
+                    <code>{{selection.codeObjectName}}</code>
+                    trong onInit và hàm sự kiện <code>EventEmitter</code> tương ứng.
+                </p>
+                <ul class="none-template-property-file-list">
+                    <li>
+                        <u href="">Bước cài <code>{{selection.codeObjectName}}</code></u>
+                    </li>
+                    <li>
+                        <div class="none-template-property-file-name">
+                            {{selection.codeFileName}}
+                        </div>
+                        <div class="none-template-property-code">
+                            <code class="codee">{{selection.codeExampleFile}}</code>
+                            <div class="none-template-property-code">
+                                <p>Viết tắt</p>
+                                <code class="codee">{{selection.codeExampleFile2}}</code>
+                            </div>
+                        </div>
+                    </li>
+                    <li><u href="">Bước cài: </u><code>{{selection.codeObjectEventName}}</code></li>
+                    <li>Ví dụ: <code>{{selection.codeObjectEvent}}"</code></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="none-template-property" *ngIf="screenlistguide.toggle as toggle">
+        <p class="color-red">Chưa có <code class="codee">[{{toggle.codeObjectName}}]="{{toggle.codeObjectName}}"</code>
+            bên ngoài template <code class="codee"> {{toggle.codeTagName}} </code>
+        </p>
+        <div class="none-template-property-usage">
+            {{toggle.codeExample}}
+        </div>
+        <div class="none-template-property-usage">
+            {{toggle.codeExample1}}
+        </div>
+    </div>
+    <div class="none-template-property" *ngIf="screenlistguide.inputSearch as inputSearch">
+        <p class="color-red">Chưa có <code
+                class="codee">[{{inputSearch.codeObjectName}}]="{{inputSearch.codeObjectName}}"</code>
+            bên ngoài template <code class="codee"> {{inputSearch.codeTagName}} </code>
+        </p>
+        <div class="none-template-property-usage">
+            {{inputSearch.codeExample}}
+        </div>
+        <div class="none-template-property-usage">
+            {{inputSearch.codeExample1}}
+        </div>
+    </div>
+    <mat-accordion class="example-headers-align" *ngIf="screenlistguide.table as table">
+        <mat-expansion-panel class="none-template-property" [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <code class="codee">"{{table.codeObjectName}}"</code>,
+                    <code class="codee">"{{table.codeObjectName1}}"</code>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <ul>
+                        <li>Chưa có <code class="codee">[{{table.codeObjectName}}]="{{table.codeObjectName}}"</code>
+                            bên ngoài
+                            template
+                            <code class="codee"><{{table.codeTagName}}></code>
+                        </li>
+                        <li>Chưa có <code class="codee">[{{table.codeObjectName1}}]="{{table.codeObjectName1}}"</code>
+                            bên ngoài
+                            template
+                            <code class="codee"><{{table.codeTagName}}></code>
+                        </li>
+                        <li>Chưa có <code class="codee">[inputFilterList]="noiDungTimKiem"</code>
+                            bên ngoài
+                            template
+                            <code class="codee"><{{table.codeTagName}}></code>
+                        </li>
+                        <li>Chưa có <code class="codee">(onAction)="onActionHandler($event)"</code>
+                            bên ngoài
+                            template
+                            <code class="codee"><{{table.codeTagName}}></code>
+                        </li>
+                    </ul>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="none-template-property-usage">
+                <p>{{'Ví dụ cách gọi và cách cài đặt dữ liệu:'|uppercase}}</p>
+                <u>Cách gọi:</u>
+                <div class="none-template-property-code">
+                    <p>Shortcut:</p>
+                    <code class="codee">{{table.codeExample}}</code>
+                </div>
+                <div class="none-template-property-code">
+                    <p>Custom:</p>
+                    <code class="codee">{{table.codeExampleFull}}</code>
+                </div>
+                <div class="none-template-property-file">
+                    <u>Cách cài đặt dữ liệu:</u>
+                    <p>Ví dụ như bên trong file <code>{{table.codeFileName}}</code> thì cài đặt dữ liệu
+                        <code>{{table.codeObjectName}}</code>
+                        trong onInit và hàm sự kiện <code>EventEmitter</code> tương ứng.
+                    </p>
+                    <ul class="none-template-property-file-list">
+                        <li>
+                            <u href="">Bước cài <code>{{table.codeObjectName}}</code></u>
+                        </li>
+                        <li>
+                            <div class="none-template-property-file-name">
+                                {{table.codeFileName}}
+                            </div>
+                            <div class="none-template-property-code">
+                                <pre><code class="codee">{{table.codeExampleFile}}</code></pre>
+                            </div>
+                        </li>
+                        <li><u href="">Bước cài <code>{{table.codeObjectEventName}}</code></u></li>
+                        <li>
+                            <p>Ví dụ như bên trong file <code>{{table.codeFileName}}</code> thì cài đặt hàm sự kiện
+                                <code>{{table.codeObjectEventName}}</code> tương ứng.
+                            </p>
+                        </li>
+                        <li>
+                            <div class="none-template-property-file-name">
+                                {{table.codeFileName}}
+                            </div>
+                            <div class="none-template-property-code">
+                                <pre><code class="codee">{{table.codeExampleFile3}}</code></pre>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <mat-action-row>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="none-template-property" [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <h1>Mục lục</h1>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <p>{{table.mucluc[0].name}}</p>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="none-template-property-file">
+                <ul class="none-template-property-file-list">
+                    <li>
+                        <u href="">Bước cài <code>{{table.mucluc[0].name}}</code></u>
+                    </li>
+                    <li>
+                        <div class="none-template-property-file-name">
+                            {{table.mucluc[0].filename}}
+                        </div>
+                        <div class="none-template-property-code">
+                            <pre><code class="codee">{{table.mucluc[0].description}}</code></pre>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+<!-- </div> -->
+<div *ngIf="!screenlistguide">
+    chua co screenlistguide...
+</div>

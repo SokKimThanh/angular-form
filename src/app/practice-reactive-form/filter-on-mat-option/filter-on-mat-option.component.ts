@@ -12,7 +12,7 @@ export interface Variables {
 export class FilterOnMatOptionComponent implements OnInit {
   variables: Variables[] = [];
   filteredVariables = [{}];
-  showInputNameOnly: OverlayEffectTableInput;
+  showInput: OverlayEffectTableInput;
   newDataSouce = new MatTableDataSource(this.variables);
   cols: OverLayEffectTableColumn[] = [
     { key: 'id', display: 'mã hiển thị' },
@@ -24,7 +24,7 @@ export class FilterOnMatOptionComponent implements OnInit {
     for (let i = 0; i <= 100; i++) {
       this.variables.push({ id: i, name: `option${i}`, age: i * 2 / 0.5, address: `${i} adress` })
     }
-    this.showInputNameOnly = {
+    this.showInput = {
       isShowInputNameOnly: true,
       input: [{ key: '', display: '' }]
     };

@@ -11,8 +11,8 @@
 </mat-form-field>
 
 
-<app-filtering-table [showInputNameOnly]="showInputNameOnly" (outSelectedRow)="outSelectedRow($event)">
+<app-filtering-table [showInputNameOnly]="showInput" (outSelectedRow)="outSelectedRow($event)">
 </app-filtering-table>
-<app-overlay-effect [showInputNameOnly]="showInputNameOnly" [dataSource]="newDataSouce" [cols]="cols"
+<app-overlay-effect [showInput]="showInput" [dataSource]="newDataSouce" [cols]="cols"
     (outSelectedRow)="outSelectedRow($event)">
 </app-overlay-effect>

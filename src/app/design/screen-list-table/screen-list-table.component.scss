@@ -1,0 +1,155 @@
+$btn-control-font-size: 1rem;
+$btn-report-font-size: 0.75rem;
+$btn-color-morevert: #4F46E5 !important;
+$border-table-color: #e0e0e0;
+$height-morevert-button: 100% !important;
+$width-morevert-button: 100% !important;
+.mat-card-table {
+    max-height: auto;
+    overflow-y: hidden;
+    overflow-x: auto;
+    border-bottom: 0;
+    .menu-column {
+        border-left: 1px solid $border-table-color;
+    }
+    &-tooltip-button {
+        background: #58656a;
+    }
+    &-locked-button {
+        pointer-events: none;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        /* style edit button */
+        box-sizing: border-box !important;
+        height: $height-morevert-button;
+        width: $width-morevert-button;
+        // border-radius: 4px;
+        @media screen and (max-width: 425px) {
+            width: auto;
+        }
+        // border: 1px solid $btn-color-morevert;
+        /* typography */
+        color: #dfdfdf;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 18px !important;
+        line-height: 18px;
+        /* animation add-button */
+        transform: translateY(0);
+        box-shadow: 0px 0 0 black;
+        transition: all 0.1s ease-in-out;
+        &-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            .mat-icon {
+                margin-right: 8px;
+            }
+            @media screen and (max-width: 425px) {
+                .text {
+                    display: none;
+                }
+                .mat-icon {
+                    margin: 0;
+                }
+            }
+        }
+    }
+    &-locked-button:hover {
+        /* animation add-button */
+        // box-shadow: 0px 3px 3px 3px hsl(0, 1%, 27%, 50%);
+        transition: all 0.1s ease-in-out;
+    }
+    &-locked-button:active {
+        /* animation add-button */
+        transform: translateY(1px);
+        box-shadow: 0 0 0 black;
+        transition: all 0.1s ease-in-out;
+    }
+    &-locked-button:focus {
+        outline: 0;
+    }
+
+    &-more-vert-button {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        /* style edit button */
+        box-sizing: border-box !important;
+        height: $height-morevert-button;
+        // width: $width-morevert-button;
+        // border-radius: 4px;
+        @media screen and (max-width: 425px) {
+            width: auto;
+        }
+        border: 1px solid $btn-color-morevert;
+        /* typography */
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 300;
+        font-size: $btn-control-font-size !important;
+        line-height: 21px;
+        /* animation add-button */
+        transform: translateY(0);
+        box-shadow: 0px 0 0 black;
+        transition: all 0.1s ease-in-out;
+        .mat-icon {
+            color: #8c5598;
+        }
+    }
+    &-more-vert-button:hover {
+        background-color: $btn-color-morevert;
+
+        /* animation add-button */
+        box-shadow: 0px 3px 3px 3px hsl(0, 1%, 27%, 50%);
+        transition: all 0.1s ease-in-out;
+        .mat-icon {
+            color: #fff;
+        }
+    }
+    &-more-vert-button:active {
+        /* animation add-button */
+        transform: translateY(1px);
+        box-shadow: 0 0 0 black;
+        transition: all 0.1s ease-in-out;
+        .mat-icon {
+            color: #fff;
+        }
+    }
+    &-more-vert-button:focus {
+        outline: 0;
+        background-color: $btn-color-morevert;
+        .mat-icon {
+            color: #fff;
+        }
+    }
+}
+.mat-card-table-turnon-overflow {
+    overflow: auto;
+    max-height: 550px;
+    @media only screen and (max-width: 2560px) {
+        max-height: 80vh !important;
+    }
+    @media only screen and (max-width: 1440px) {
+        max-height: 75vh !important;
+    }
+    @media only screen and (max-width: 1366px) {
+        max-height: 70vh !important;
+    }
+    @media only screen and (max-width: 1024px) {
+        max-height: 550px !important;
+    }
+}
+.example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.example-margin {
+    margin: 0;
+}

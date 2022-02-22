@@ -1,0 +1,84 @@
+.none-template-property {
+    border-radius: 10px !important;
+    border: 1px solid #8c5598 !important;
+    background-color: #fff !important;
+    padding: 1em;
+    margin-bottom: 16px;
+    min-height: 60px;
+    @media screen and (max-width: 425px) {
+        width: 83%;
+    }
+    &-usage {
+        border: 1px solid #ccc;
+        padding: 8px;
+        border-radius: 1em;
+        margin-bottom: 8px;
+    }
+    &-file {
+        &-name {
+            background: #8c5598;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 1em;
+            line-height: 14px;
+            color: #ffffff;
+            width: 277px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1em 1em 0 0;
+        }
+        &-list {
+            list-style-type: none;
+            padding: 0 8px;
+            margin: 0;
+        }
+    }
+    .mat-expansion-panel-header,
+    .mat-expansion-panel-body {
+        padding: 0;
+    }
+}
+.codee {
+    text-align: center;
+    font-size: 1em;
+    @media screen and (max-width: 425px) {
+        font-size: 0.75em;
+    }
+}
+.none-template-property-code {
+    border: solid thin #c4c4c4;
+    padding: 0.25rem;
+    border-radius: 0.25em;
+    color: rgb(0 0 0/84%);
+    margin-bottom: 8px;
+    .codee {
+        text-align: center;
+        font-size: 1em;
+        @media screen and (max-width: 425px) {
+            font-size: 0.75em;
+        }
+    }
+    @media screen and (max-width: 1024px) {
+        width: 100%;
+        overflow: auto;
+    }
+}
+.color-red {
+    color: red;
+}
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.example-headers-align .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+}

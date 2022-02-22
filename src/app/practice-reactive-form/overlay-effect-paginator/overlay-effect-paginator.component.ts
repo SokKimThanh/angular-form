@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-overlay-effect-paginator',
@@ -14,7 +15,7 @@ export class OverlayEffectPaginatorComponent implements OnInit, AfterViewInit {
   pageSizeOptions: number[] = [5, 10, 25, 100];
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<PeriodicElement>([]);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   // MatPaginator Output
@@ -22,6 +23,10 @@ export class OverlayEffectPaginatorComponent implements OnInit, AfterViewInit {
   constructor() { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.dataSource.data = ELEMENT_DATA;
+      this.dataSource.paginator = this.paginator;
+    }, 1000)
   }
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
@@ -31,7 +36,6 @@ export class OverlayEffectPaginatorComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
   }
 }
 export interface PeriodicElement {

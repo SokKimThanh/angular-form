@@ -22,26 +22,27 @@
                 <mat-card class="form-filter-card-overlay">
                     <mat-card-title class="form-filter-card-overlay-title">
                         <mat-form-field class="input-search" appearance="fill">
+                            <mat-label>
+                                {{showInput.showInputSearchName?showInput.showInputSearchName: 'Tìm kiếm' |
+                                uppercase}}
+                            </mat-label>
                             <div class="input-search-container">
                                 <div class="input-search-container-flex">
                                     <button class="input-search-container-flex-button" mat-icon-button
                                         (click)="loadingOverlayFilteringTable()" matTooltip="Trở về">
                                         <mat-icon>arrow_back</mat-icon>
                                     </button>
-                                    <mat-label>
-                                        {{showInput.showInputSearchName?showInput.showInputSearchName: 'Tìm kiếm' |
-                                        uppercase}}
-                                    </mat-label>
-                                </div>
-                                <div class="input-search-container-flex">
-                                    <button class="input-search-container-flex-button" mat-icon-button>
-                                        <mat-icon>search</mat-icon>
-                                    </button>
-                                    <input matInput #inputSearch cdkFocusInitial formControlName='inputSearchControl'>
-                                    <button mat-icon-button (click)="clear()" *ngIf="isFilteringInputSearch"
-                                        matTooltip="Nhập lại">
-                                        <mat-icon>clear</mat-icon>
-                                    </button>
+                                    <div class="input-search-container-flex">
+                                        <button class="input-search-container-flex-button" mat-icon-button>
+                                            <mat-icon>search</mat-icon>
+                                        </button>
+                                        <input matInput #inputSearch cdkFocusInitial
+                                            formControlName='inputSearchControl'>
+                                        <button mat-icon-button (click)="clear()" *ngIf="isFilteringInputSearch"
+                                            matTooltip="Nhập lại">
+                                            <mat-icon>clear</mat-icon>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </mat-form-field>
@@ -54,7 +55,7 @@
                     </mat-card-content>
                     <mat-card-action class="form-filter-card-overlay-actions">
                         <button mat-icon-button (click)="loadingOverlayFilteringTable()" matTooltip="Đóng">
-                            <mat-icon>refresh</mat-icon>
+                            <mat-icon>close</mat-icon>
                         </button>
                     </mat-card-action>
                 </mat-card>

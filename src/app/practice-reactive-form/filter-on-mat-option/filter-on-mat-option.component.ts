@@ -22,7 +22,7 @@ export class FilterOnMatOptionComponent implements OnInit {
   ]
   constructor() {
     for (let i = 0; i <= 10000; i++) {
-      this.variables.push({ id: i, name: `option${i}`, age: i * 2 / 0.5, address: `${i} adress` })
+      this.variables.push({ id: i, name: "option " + i, age: i * 2 / 0.5, address: i + " adress" })
     }
     this.showInput = {
       isShowInputNameOnly: true,

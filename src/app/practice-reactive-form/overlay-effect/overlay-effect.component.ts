@@ -32,18 +32,8 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
     pageSizeOptions: PAGESIZEOPTIONS,
     length: null,
   };
-  @Input('cols') tableCols: OverLayEffectTableColumn[] = [
-    { key: 'name', display: 'NAME' },
-    { key: 'colour', display: 'FAVOURITE COLOUR' },
-    { key: 'id', display: 'ID' },
-    { key: 'pet', display: 'PET' }
-  ]
-  @Input() showInput: OverlayEffectTableInput = {
-    isShowInputNameOnly: null,
-    showInputSearchID: 'Mã thông tin',
-    showInputSearchName: 'Tên thông tin',
-    input: this.tableCols
-  };
+  @Input('cols') tableCols!: OverLayEffectTableColumn[]
+  @Input() showInput!: OverlayEffectTableInput
   @Output('outSelectedRow') outSelectedRow = new EventEmitter<any>();
   @Output() pageEventEmitter = new EventEmitter<PageEvent>();
 
@@ -73,7 +63,6 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
     this.selection.changed.subscribe(s => {
       this.selectedFilter = s.source.selected[0];
     });
-    this.showInput.isShowInputNameOnly = this.showInput.isShowInputNameOnly ? this.showInput.isShowInputNameOnly : false;
   }
   get inputSearchControl() {
     return this.autocompleteForm.get('inputSearchControl');
@@ -96,6 +85,20 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
         this.dataSource.filter = enteringFilter;
       }
     );
+    if (!this.tableCols) {
+      this.tableCols = [
+        { key: 'name', display: 'NAME' },
+        { key: 'colour', display: 'FAVOURITE COLOUR' },
+        { key: 'id', display: 'ID' },
+        { key: 'pet', display: 'PET' }
+      ]
+      this.showInput = {
+        isShowInputNameOnly: false,
+        showInputSearchID: 'Mã thông tin',
+        showInputSearchName: 'Tên thông tin',
+        input: this.tableCols
+      };
+    }
   }
   ngAfterViewInit(): void {
     if (this.showInput) {

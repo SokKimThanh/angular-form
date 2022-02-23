@@ -33,13 +33,17 @@
 }
 .card-overlay-table {
   width: 100vw;
-  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
 }
 .mat-card-table-turnon-overflow {
   overflow: auto;
   max-height: 550px;
   @media only screen and (max-width: 2560px) {
-    max-height: 80vh !important;
+    max-height: 75vh !important;
   }
   @media only screen and (max-width: 1440px) {
     max-height: 75vh !important;
@@ -50,6 +54,9 @@
   @media only screen and (max-width: 1024px) {
     max-height: 550px !important;
   }
+}
+.mat-card-content {
+  margin: 0;
 }
 .mat-card-actions {
   margin: 0;

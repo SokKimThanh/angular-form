@@ -7,7 +7,6 @@
                     <input matInput formControlName="inputShowIdFilterControl">
                 </mat-form-field>
             </div>
-            {{keysOverlayEffectInput | json}}
             <div #filterDivName class="form-filter-input-name">
                 <mat-form-field appearance="outline">
                     <mat-label>{{showInput.showInputSearchName | titlecase}}</mat-label>
@@ -29,7 +28,8 @@
                                         (click)="loadingOverlayFilteringTable()" matTooltip="Trở về">
                                         <mat-icon>arrow_back</mat-icon>
                                     </button>
-                                    <mat-label> {{showInput.showInputSearchName | uppercase}}
+                                    <mat-label> {{showInput.showInputSearchName?showInput.showInputSearchName: 'Tìm
+                                        kiếm' | uppercase}}
                                     </mat-label>
                                 </div>
                                 <div class="input-search-container-flex">

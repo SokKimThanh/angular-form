@@ -25,3 +25,4 @@ export interface OverlayEffectTablePaginator {
     pageIndex: number | null;
     pageSizeOptions: number[] | null;
 }
+export const PAGESIZEOPTIONS = [5, 10, 25, 100];

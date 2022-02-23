@@ -7,7 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { debounceTime } from 'rxjs';
 import { People } from '../filtering-table/element.interface';
 import { PEOPLE } from '../filtering-table/ELEMENT_DATA';
-import { OverLayEffectTableColumn, OverlayEffectTableInput, OverlayEffectTablePaginator } from './overlay-effect-table-config.interface';
+import { OverLayEffectTableColumn, OverlayEffectTableInput, OverlayEffectTablePaginator, PAGESIZEOPTIONS } from './overlay-effect-table-config.interface';
 
 @Component({
   selector: 'app-overlay-effect',
@@ -29,7 +29,7 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
   @Input() showPaginator: OverlayEffectTablePaginator = {
     pageIndex: 0,
     pageSize: null,
-    pageSizeOptions: [5, 10, 25, 100],
+    pageSizeOptions: PAGESIZEOPTIONS,
     length: null,
   };
   @Input('cols') tableCols: OverLayEffectTableColumn[] = [

@@ -108,7 +108,6 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
       ]
       this.showInput = {
         isShowInputNameOnly: false,
-        isShowInputGuide: false,
         showInputSearchID: 'Mã thông tin',
         showInputSearchName: 'Tên thông tin',
         input: this.tableCols

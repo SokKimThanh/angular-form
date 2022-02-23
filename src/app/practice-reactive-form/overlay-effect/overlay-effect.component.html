@@ -62,10 +62,38 @@
         </form>
     </article>
 </section>
-<section *ngIf="!dataSource.data.length">
+<section *ngIf="!dataSource?.data.length">
+    <mat-progress-bar mode="buffer" *ngIf="!dataSource?.data.length">
+    </mat-progress-bar>
     <article class="section-article">
         <div class="section-article-title">
             <h1>Hướng dẫn sử dụng overlay-effect-table-filtering-data!</h1>
+        </div>
+        <div class="section-article--condition">
+            <ul class="section-article--condition-list">
+                <li class="section-article--condition-list-items">
+                    <a class="section-article--condition-list-items-link">
+                        <mat-icon>error_outline</mat-icon>
+                        <span>required `[showInput]="showInput"`</span>
+                    </a>
+                    <a class="section-article--condition-list-items-link">
+                        <mat-icon>error_outline</mat-icon>
+                        <span>required `[dataSource]="dataSource"`</span>
+                    </a>
+                    <a class="section-article--condition-list-items-link">
+                        <mat-icon>error_outline</mat-icon>
+                        <span>required `[cols]="cols"`</span>
+                    </a>
+                    <a class="section-article--condition-list-items-link">
+                        <mat-icon>error_outline</mat-icon>
+                        <span>required `[showPaginator]="showPaginator"`</span>
+                    </a>
+                    <a class="section-article--condition-list-items-link">
+                        <mat-icon>error_outline</mat-icon>
+                        <span>required `(outSelectedRow)="outSelectedRow($event)"`</span>
+                    </a>
+                </li>
+            </ul>
         </div>
         <mat-tab-group class="section-article-content">
             <mat-tab label="filter-on-mat-option.component.html">
@@ -78,7 +106,7 @@
             </mat-tab>
             <mat-tab label="filter-on-mat-option.component.ts">
                 <div class="section-article-title">
-                    <pre class="precode"><code>{{exampleCodeTS}}</code></pre>
+                    <pre class="precode"><code class="code">{{exampleCodeTS}}</code></pre>
                     <button mat-icon-button matTooltip="Sao chép" (click)="copyExampleCodeTS()">
                         <mat-icon>content_copy</mat-icon>
                     </button>
@@ -86,7 +114,7 @@
             </mat-tab>
             <mat-tab label="filter-on-mat-option.component.scss">
                 <div class="section-article-title">
-                    <pre class="precode"><code> no css!</code></pre>
+                    <pre class="precode"><code class="code"> no css!</code></pre>
                     <button mat-icon-button matTooltip="Sao chép" [ngxClipboard]="">
                         <mat-icon>content_copy</mat-icon>
                     </button>

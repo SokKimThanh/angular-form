@@ -15,7 +15,6 @@ export interface OverLayEffectTableColumn {
 
 export interface OverlayEffectTableInput {
   isShowInputNameOnly: boolean | null;
-  isShowInputGuide?: boolean | null;
   showInputSearchID: string;
   showInputSearchName: string;
   input: OverLayEffectTableColumn[];

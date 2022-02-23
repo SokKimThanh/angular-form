@@ -62,8 +62,36 @@
         </form>
     </article>
 </section>
-<section>
-    <pre *ngIf="isOpen">
-        {{exampleCode}}
-    </pre>
+<section *ngIf="showInput.isShowInputGuide">
+    <article class="section-article">
+        <div class="section-article-title">
+            <h1>Hướng dẫn sử dụng overlay-effect-table-filtering-data!</h1>
+        </div>
+        <mat-tab-group class="section-article-content">
+            <mat-tab label="filter-on-mat-option.component.html">
+                <div class="section-article-title">
+                    <button mat-icon-button matTooltip="Sao chép">
+                        <mat-icon>content_copy</mat-icon>
+                    </button>
+                    <pre class="precode"><code class="code">{{exampleCodeHTML}}</code></pre>
+                </div>
+            </mat-tab>
+            <mat-tab label="filter-on-mat-option.component.ts">
+                <div class="section-article-title">
+                    <button mat-icon-button matTooltip="Sao chép">
+                        <mat-icon>content_copy</mat-icon>
+                    </button>
+                    <pre class="precode"><code>{{exampleCodeTS}}</code></pre>
+                </div>
+            </mat-tab>
+            <mat-tab label="filter-on-mat-option.component.scss">
+                <div class="section-article-title">
+                    <button mat-icon-button matTooltip="Sao chép">
+                        <mat-icon>content_copy</mat-icon>
+                    </button>
+                    <pre class="precode"><code> no css!</code></pre>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </article>
 </section>

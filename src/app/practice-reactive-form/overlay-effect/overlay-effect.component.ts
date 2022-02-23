@@ -7,7 +7,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { debounceTime } from 'rxjs';
 import { People } from '../filtering-table/element.interface';
 import { PEOPLE } from '../filtering-table/ELEMENT_DATA';
-import { OverLayEffectTableColumn, OverlayEffectTableInput, OverlayEffectTablePaginator, PAGESIZEOPTIONS } from './overlay-effect-table-config.interface';
+import { OverLayEffectTableColumn, OverlayEffectTableInput, OverlayEffectTablePaginator, PAGESIZEOPTIONS, } from './overlay-effect-table-config.interface';
+import { EXAMPLECODEHTML, EXAMPLECODETS } from './overlay-effect-table-guide';
 
 @Component({
   selector: 'app-overlay-effect',
@@ -19,9 +20,8 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
    * OVERLAY TABLE CONDITION
    */
   isOpen = false;
-  exampleCode = `<app-overlay-effect [showInput]="showInput" [dataSource]="newDataSouce" [cols]="cols"
-  (outSelectedRow)="outSelectedRow($event)">
-</app-overlay-effect>`
+  exampleCodeTS = EXAMPLECODETS;
+  exampleCodeHTML = EXAMPLECODEHTML;
   /* ================================================================= */
   /* KHU VUC THIET LAP FORM MODEL */
   /* ================================================================= */
@@ -103,6 +103,7 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
       ]
       this.showInput = {
         isShowInputNameOnly: false,
+        isShowInputGuide: false,
         showInputSearchID: 'Mã thông tin',
         showInputSearchName: 'Tên thông tin',
         input: this.tableCols

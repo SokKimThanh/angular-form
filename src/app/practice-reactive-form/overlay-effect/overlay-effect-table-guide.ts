@@ -1,3 +1,6 @@
+
+export const EXAMPLECODEHTML = `<app-overlay-effect [showInput]="showInput" [dataSource]="newDataSouce" [cols]="cols" (outSelectedRow)="outSelectedRow($event)"></app-overlay-effect>`
+export const EXAMPLECODETS = `
 import { OverLayEffectTableColumn, OverlayEffectTableInput } from './../overlay-effect/overlay-effect-table-config.interface';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
@@ -21,7 +24,7 @@ export class FilterOnMatOptionComponent implements OnInit {
   ]
   constructor() {
     for (let i = 0; i <= 100; i++) {
-      this.variables.push({ id: i, name: `option${i}`, age: i * 2 / 0.5, address: `${i} adress` })
+      this.variables.push({ id: i, name: "option $ { i }", age: i * 2 / 0.5, address: "$ { i } adress" })
     }
     this.showInput = {
       isShowInputNameOnly: true,
@@ -38,3 +41,4 @@ export class FilterOnMatOptionComponent implements OnInit {
     console.log(selectedRow);
   }
 }
+`

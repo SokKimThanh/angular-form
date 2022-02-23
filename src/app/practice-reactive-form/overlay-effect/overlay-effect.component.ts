@@ -15,7 +15,13 @@ import { OverLayEffectTableColumn, OverlayEffectTableInput, OverlayEffectTablePa
   styleUrls: ['./overlay-effect.component.scss']
 })
 export class OverlayEffectComponent implements OnInit, AfterViewInit {
+  /** 
+   * OVERLAY TABLE CONDITION
+   */
   isOpen = false;
+  exampleCode = `<app-overlay-effect [showInput]="showInput" [dataSource]="newDataSouce" [cols]="cols"
+  (outSelectedRow)="outSelectedRow($event)">
+</app-overlay-effect>`
   /* ================================================================= */
   /* KHU VUC THIET LAP FORM MODEL */
   /* ================================================================= */
@@ -32,8 +38,11 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
     pageSizeOptions: PAGESIZEOPTIONS,
     length: null,
   };
-  @Input('cols') tableCols!: OverLayEffectTableColumn[]
-  @Input() showInput!: OverlayEffectTableInput
+  @Input('cols') tableCols!: OverLayEffectTableColumn[];
+  /**
+   * ID/NAME Title input filtering table
+   */
+  @Input() showInput!: OverlayEffectTableInput;
   @Output('outSelectedRow') outSelectedRow = new EventEmitter<any>();
   @Output() pageEventEmitter = new EventEmitter<PageEvent>();
 

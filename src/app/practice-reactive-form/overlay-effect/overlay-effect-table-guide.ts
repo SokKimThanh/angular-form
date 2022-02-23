@@ -1,5 +1,5 @@
 
-export const EXAMPLECODEHTML = `<app-overlay-effect [showInput]="showInput" [dataSource]="newDataSouce" [cols]="cols" (outSelectedRow)="outSelectedRow($event)"></app-overlay-effect>`
+export const EXAMPLECODEHTML = `<app-overlay-effect [showInput]="showInput" [dataSource]="dataSource" [cols]="cols" (outSelectedRow)="outSelectedRow($event)"></app-overlay-effect>`
 export const EXAMPLECODETS = `
 import { OverLayEffectTableColumn, OverlayEffectTableInput } from './../overlay-effect/overlay-effect-table-config.interface';
 import { Component, OnInit } from '@angular/core';

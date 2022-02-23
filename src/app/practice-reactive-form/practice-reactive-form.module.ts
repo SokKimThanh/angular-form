@@ -17,6 +17,7 @@ import { ParenthesizePipePipe } from './mat-select-custom/parenthesize-pipe.pipe
 import { FilterProgressBarComponent } from './filter-progress-bar/filter-progress-bar.component';
 import { OverlayEffectComponent } from './overlay-effect/overlay-effect.component';
 import { DesignModule } from '../design/design.module';
+import { ClipboardModule } from 'ngx-clipboard';
 @NgModule({
   declarations: [
     PracticeReactiveFormComponent,
@@ -51,7 +52,8 @@ import { DesignModule } from '../design/design.module';
     ]),
     MaterialModule,
     MatSelectFilterModule,
-    DesignModule
+    DesignModule,
+    ClipboardModule
   ]
 })
 export class PracticeReactiveFormModule { }

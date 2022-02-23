@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatInput } from '@angular/material/input';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ClipboardService } from 'ngx-clipboard';
 import { debounceTime } from 'rxjs';
 import { People } from '../filtering-table/element.interface';
 import { PEOPLE } from '../filtering-table/ELEMENT_DATA';
@@ -62,7 +63,12 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
   }
   selectedFilter!: People;
   isFilteringInputSearch!: boolean;
-  constructor(private fb: FormBuilder, private renderer: Renderer2, private cd: ChangeDetectorRef) {
+  constructor(
+    private fb: FormBuilder,
+    private renderer: Renderer2,
+    private cd: ChangeDetectorRef,
+    private clipboardApi: ClipboardService
+  ) {
     this.autocompleteForm = this.fb.group({
       inputSearchControl: '',
       inputShowIdFilterControl: '',
@@ -142,5 +148,11 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
     // this.inputSearch.focus();
     // this.cd.detectChanges();
     return this.isOpen;
+  }
+  copyExampleCodeHTML(): void {
+    this.clipboardApi.copyFromContent(this.exampleCodeHTML);
+  }
+  copyExampleCodeTS(): void {
+    this.clipboardApi.copyFromContent(this.exampleCodeTS);
   }
 }

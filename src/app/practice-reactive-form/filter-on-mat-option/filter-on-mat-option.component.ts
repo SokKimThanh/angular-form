@@ -1,4 +1,4 @@
-import { OverLayEffectTableColumn, OverlayEffectTableInput } from './../overlay-effect/overlay-effect-table-config.interface';
+import { OverLayEffectTableColumn, OverlayEffectTableInput, OverlayEffectTablePaginator } from './../overlay-effect/overlay-effect-table-config.interface';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 export interface Variables {
@@ -11,7 +11,8 @@ export interface Variables {
 })
 export class FilterOnMatOptionComponent implements OnInit {
   variables: Variables[] = [];
-  showInput: OverlayEffectTableInput;
+  showInput!: OverlayEffectTableInput;
+  showPaginator!: OverlayEffectTablePaginator;
   dataSource = new MatTableDataSource(this.variables);
   cols: OverLayEffectTableColumn[] = [
     { key: 'id', display: 'mã hiển thị' },
@@ -20,16 +21,22 @@ export class FilterOnMatOptionComponent implements OnInit {
     { key: 'age', display: 'tuổi' },
   ]
   constructor() {
-    for (let i = 0; i <= 100; i++) {
+    for (let i = 0; i <= 10000; i++) {
       this.variables.push({ id: i, name: `option${i}`, age: i * 2 / 0.5, address: `${i} adress` })
     }
     this.showInput = {
       isShowInputNameOnly: true,
-      isShowInputGuide: true,
+      // isShowInputGuide: false,
       showInputSearchID: 'ID',
       showInputSearchName: 'Name',
       input: [{ key: '', display: '' }]
     };
+    this.showPaginator = {
+      length: 0,
+      pageIndex: 0,
+      pageSize: 20,
+      pageSizeOptions: [20, 100, 200, 500, 1000]
+    }
   }
 
   ngOnInit(): void {

@@ -66,7 +66,6 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
   constructor(
     private fb: FormBuilder,
     private renderer: Renderer2,
-    private cd: ChangeDetectorRef,
     private clipboardApi: ClipboardService
   ) {
     this.autocompleteForm = this.fb.group({

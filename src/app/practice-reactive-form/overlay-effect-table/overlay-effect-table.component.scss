@@ -20,6 +20,7 @@
 }
 .table-scroll {
   overflow: auto;
+  height: 75vh;
 }
 .table-wrapper table {
   width: 100%;
@@ -43,7 +44,7 @@
   overflow: auto;
   max-height: 550px;
   @media only screen and (max-width: 2560px) {
-    max-height: 75vh !important;
+    max-height: 80vh !important;
   }
   @media only screen and (max-width: 1440px) {
     max-height: 75vh !important;

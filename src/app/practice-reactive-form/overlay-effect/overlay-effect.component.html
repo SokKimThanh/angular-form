@@ -3,13 +3,14 @@
         <form class="form-filter" [formGroup]="autocompleteForm">
             <div class="form-filter-input-id" *ngIf="!showInput.isShowInputNameOnly">
                 <mat-form-field #filterId appearance="outline">
-                    <mat-label>ID</mat-label>
+                    <mat-label>{{showInput.showInputSearchID | titlecase}}</mat-label>
                     <input matInput formControlName="inputShowIdFilterControl">
                 </mat-form-field>
             </div>
+            {{keysOverlayEffectInput | json}}
             <div #filterDivName class="form-filter-input-name">
                 <mat-form-field appearance="outline">
-                    <mat-label>Name</mat-label>
+                    <mat-label>{{showInput.showInputSearchName | titlecase}}</mat-label>
                     <input matInput formControlName="inputShowNameFilterControl">
                 </mat-form-field>
                 <button class="form-filter-input-name-button" mat-icon-button (click)="loadingOverlayFilteringTable()"
@@ -21,14 +22,27 @@
             <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOpen">
                 <mat-card class="form-filter-card-overlay">
                     <mat-card-title class="form-filter-card-overlay-title">
-                        <mat-form-field class="input-search">
-                            <mat-icon matPrefix>search</mat-icon>
-                            <mat-label> Tìm kiếm </mat-label>
-                            <input matInput #inputSearch cdkFocusInitial formControlName='inputSearchControl'>
-                            <button matSuffix mat-icon-button (click)="clear()" *ngIf="isFilteringInputSearch"
-                                matTooltip="Nhập lại">
-                                <mat-icon>clear</mat-icon>
-                            </button>
+                        <mat-form-field class="input-search" appearance="fill">
+                            <div class="input-search-container">
+                                <div class="input-search-container-flex">
+                                    <button class="input-search-container-flex-button" mat-icon-button
+                                        (click)="loadingOverlayFilteringTable()" matTooltip="Trở về">
+                                        <mat-icon>arrow_back</mat-icon>
+                                    </button>
+                                    <mat-label> {{showInput.showInputSearchName | uppercase}}
+                                    </mat-label>
+                                </div>
+                                <div class="input-search-container-flex">
+                                    <button class="input-search-container-flex-button" mat-icon-button>
+                                        <mat-icon>search</mat-icon>
+                                    </button>
+                                    <input matInput #inputSearch cdkFocusInitial formControlName='inputSearchControl'>
+                                    <button mat-icon-button (click)="clear()" *ngIf="isFilteringInputSearch"
+                                        matTooltip="Nhập lại">
+                                        <mat-icon>clear</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
                         </mat-form-field>
                     </mat-card-title>
                     <mat-card-content class="form-filter-card-overlay-content">
@@ -37,6 +51,11 @@
                             [showPaginator]="showPaginator">
                         </app-overlay-effect-table>
                     </mat-card-content>
+                    <mat-card-action class="form-filter-card-overlay-actions">
+                        <button mat-icon-button (click)="loadingOverlayFilteringTable()" matTooltip="Đóng">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-card-action>
                 </mat-card>
             </ng-template>
         </form>

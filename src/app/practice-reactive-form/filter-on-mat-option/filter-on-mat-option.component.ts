@@ -26,6 +26,8 @@ export class FilterOnMatOptionComponent implements OnInit {
     }
     this.showInput = {
       isShowInputNameOnly: true,
+      showInputSearchID: 'ID',
+      showInputSearchName: 'Name',
       input: [{ key: '', display: '' }]
     };
   }

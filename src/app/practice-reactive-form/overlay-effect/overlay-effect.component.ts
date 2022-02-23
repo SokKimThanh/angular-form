@@ -1,5 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatInput } from '@angular/material/input';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -32,19 +32,18 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
     pageSizeOptions: [5, 10, 25, 100],
     length: null,
   };
-  @Input() showInput: OverlayEffectTableInput = {
-    isShowInputNameOnly: null,
-    input: [
-      { key: 'id', display: 'Nhập mã' },
-      { key: 'name', display: 'Nhập tên' },
-    ]
-  };
   @Input('cols') tableCols: OverLayEffectTableColumn[] = [
     { key: 'name', display: 'NAME' },
     { key: 'colour', display: 'FAVOURITE COLOUR' },
     { key: 'id', display: 'ID' },
     { key: 'pet', display: 'PET' }
   ]
+  @Input() showInput: OverlayEffectTableInput = {
+    isShowInputNameOnly: null,
+    showInputSearchID: 'Mã thông tin',
+    showInputSearchName: 'Tên thông tin',
+    input: this.tableCols
+  };
   @Output('outSelectedRow') outSelectedRow = new EventEmitter<any>();
   @Output() pageEventEmitter = new EventEmitter<PageEvent>();
 
@@ -55,7 +54,7 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
   /* KHU VUC THIET VARIABLE HTML */
   /* ================================================================= */
   get keys() { return this.tableCols.map(({ key }) => key); }
-  get keysOverlayEffect() { return this.showInput.input.map(({ key }) => key); }
+  get keysOverlayEffectInput() { return this.showInput.input.map(({ key }) => key); }
   selection = new SelectionModel<any>(true, []);
   inputFilterNoResult!: string;
   private _selection = new Set<any>();
@@ -64,7 +63,7 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
   }
   selectedFilter!: People;
   isFilteringInputSearch!: boolean;
-  constructor(private fb: FormBuilder, private renderer: Renderer2) {
+  constructor(private fb: FormBuilder, private renderer: Renderer2, private cd: ChangeDetectorRef) {
     this.autocompleteForm = this.fb.group({
       inputSearchControl: '',
       inputShowIdFilterControl: '',
@@ -125,7 +124,10 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
   clear(): void {
     this.autocompleteForm.reset();
   }
-  loadingOverlayFilteringTable(): void {
+  loadingOverlayFilteringTable(): boolean {
     this.isOpen = !this.isOpen;
+    // this.inputSearch.focus();
+    // this.cd.detectChanges();
+    return this.isOpen;
   }
 }

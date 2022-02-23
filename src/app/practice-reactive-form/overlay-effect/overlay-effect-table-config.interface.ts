@@ -15,6 +15,8 @@ export interface OverLayEffectTableColumn {
 
 export interface OverlayEffectTableInput {
     isShowInputNameOnly: boolean | null;
+    showInputSearchID: string;
+    showInputSearchName: string;
     input: OverLayEffectTableColumn[];
 }
 export interface OverlayEffectTablePaginator {

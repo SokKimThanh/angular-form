@@ -55,4 +55,4 @@ import { TableReactiveFormComponent } from "./table-reactive-form/table-reactive
     ClipboardModule
   ]
 })
-export class PracticeReactiveFormModule { }
+export class OverlayFilteringTableModule { }

@@ -1,9 +1,0 @@
-<div *ngIf="screenListButton">
-    <button mat-button color="primary" class="add-button" (click)="emit($event)" *ngIf="screenListButton.active">
-        <span class="add-button-icon">
-            <mat-icon svgIcon="{{screenListButton.svgIcon}}"></mat-icon>
-        </span>
-    </button>
-</div>
-<app-screen-list-guide [screenListGuideButton]="screenListGuideButton" *ngIf="!screenListButton">
-</app-screen-list-guide>

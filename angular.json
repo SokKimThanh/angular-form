@@ -109,6 +109,68 @@
           }
         }
       }
+    },
+    "overlay-filtering-table": {
+      "projectType": "library",
+      "root": "projects/overlay-filtering-table",
+      "sourceRoot": "projects/overlay-filtering-table/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/overlay-filtering-table/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/overlay-filtering-table/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/overlay-filtering-table/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/overlay-filtering-table/src/test.ts",
+            "tsConfig": "projects/overlay-filtering-table/tsconfig.spec.json",
+            "karmaConfig": "projects/overlay-filtering-table/karma.conf.js"
+          }
+        }
+      }
+    },
+    "overlay-effect": {
+      "projectType": "library",
+      "root": "projects/overlay-effect",
+      "sourceRoot": "projects/overlay-effect/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/overlay-effect/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/overlay-effect/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/overlay-effect/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/overlay-effect/src/test.ts",
+            "tsConfig": "projects/overlay-effect/tsconfig.spec.json",
+            "karmaConfig": "projects/overlay-effect/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "angular-form"

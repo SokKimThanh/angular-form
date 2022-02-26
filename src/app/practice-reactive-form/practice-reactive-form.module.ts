@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { MatSelectFilterModule } from "mat-select-filter";
 import { ClipboardModule } from "ngx-clipboard";
+import { TestLibModule } from "overlay-filter-table";
 import { MaterialModule } from "../material/material.module";
 import { AutocompleteReactiveFormComponent } from "./autocomplete-reactive-form/autocomplete-reactive-form.component";
 import { FilterOnMatOptionComponent } from "./filter-on-mat-option/filter-on-mat-option.component";
@@ -54,7 +55,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     ]),
     MaterialModule,
     MatSelectFilterModule,
-    ClipboardModule
+    ClipboardModule,
+    TestLibModule
   ]
 })
 export class OverlayFilteringTableModule { }

@@ -17,6 +17,7 @@ import { OverlayEffectTableComponent } from "./overlay-effect-table/overlay-effe
 import { OverlayEffectComponent } from "./overlay-effect/overlay-effect.component";
 import { PracticeReactiveFormComponent } from "./practice-reactive-form.component";
 import { TableReactiveFormComponent } from "./table-reactive-form/table-reactive-form.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { TableReactiveFormComponent } from "./table-reactive-form/table-reactive
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     RouterModule.forChild([
       { path: '', component: PracticeReactiveFormComponent },
       { path: 'autocomplete-table', component: AutocompleteReactiveFormComponent },

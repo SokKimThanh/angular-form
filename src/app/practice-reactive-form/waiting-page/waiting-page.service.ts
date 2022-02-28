@@ -11,7 +11,7 @@ import { MatSpinner } from '@angular/material/progress-spinner';
 @Injectable({
     providedIn: 'root',
 })
-export class UiService {
+export class WaitingPageService {
     private spinnerTopRef: OverlayRef;
 
     private spin$: Subject<number> = new Subject()

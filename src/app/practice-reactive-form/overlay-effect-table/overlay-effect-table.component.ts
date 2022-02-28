@@ -1,3 +1,4 @@
+import { OverlayEffectTablesDataSource } from '../filter-on-mat-option/overlay-effect-table.cdk';
 import { MatInput } from '@angular/material/input';
 import { SelectionModel } from '@angular/cdk/collections';
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
@@ -15,7 +16,7 @@ export class OverlayEffectTableComponent implements OnInit, AfterViewInit {
   /* ================================================================= */
   /* KHU VUC THIET INPUT OUTPUT */
   /* ================================================================= */
-  @Input() dataSource = new MatTableDataSource();
+  @Input() dataSource!: MatTableDataSource<any>;
   @Input() pageEvent!: PageEvent;
   @Input() showPaginator!: OverlayEffectTablePaginator;
   @Input('cols') tableCols: OverLayEffectTableColumn[] = []
@@ -41,6 +42,7 @@ export class OverlayEffectTableComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+
   }
   ngAfterViewInit(): void {
     if (this.dataSource) {

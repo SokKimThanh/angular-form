@@ -14,15 +14,16 @@ export interface OverLayEffectTableColumn {
 }
 
 export interface OverlayEffectTableInput {
-  isShowInputNameOnly: boolean | null;
+  isShowInputNameOnly: boolean;
   showInputSearchID: string;
   showInputSearchName: string;
   input: OverLayEffectTableColumn[];
 }
 export interface OverlayEffectTablePaginator {
-  length: number | null;
-  pageSize: number | null;
-  pageIndex: number | null;
-  pageSizeOptions: number[] | null;
+  length: number;
+  pageSize: number;
+  pageIndex: number;
+  pageSizeOptions: number[];
+  sortDirection: string;
 }
 export const PAGESIZEOPTIONS = [5, 10, 25, 100];

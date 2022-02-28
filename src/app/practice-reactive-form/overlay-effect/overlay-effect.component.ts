@@ -33,12 +33,7 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
   /* ================================================================= */
   @Input() dataSource = new MatTableDataSource();
   @Input() pageEvent!: PageEvent;
-  @Input() showPaginator: OverlayEffectTablePaginator = {
-    pageIndex: 0,
-    pageSize: null,
-    pageSizeOptions: PAGESIZEOPTIONS,
-    length: null,
-  };
+  @Input() showPaginator!: OverlayEffectTablePaginator;
   @Input('cols') tableCols!: OverLayEffectTableColumn[];
   /**
    * ID/NAME Title input filtering table
@@ -110,7 +105,7 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
         isShowInputNameOnly: false,
         showInputSearchID: 'Mã thông tin',
         showInputSearchName: 'Tên thông tin',
-        input: this.tableCols
+        input: this.tableCols,
       };
     }
   }

@@ -13,16 +13,15 @@
                     <input matInput formControlName="inputShowNameFilterControl">
                 </mat-form-field>
                 <button class="form-filter-input-name-button" mat-icon-button (click)="isOpen = !isOpen" type="button"
-                    cdkOverlayOrigin #trigger='cdkOverlayOrigin'
-                    [style.disabled]="!dataSource?.data && !dataSource?.data.length">
+                    cdkOverlayOrigin #trigger='cdkOverlayOrigin'>
                     <mat-icon>{{isOpen ? "close" : "arrow_right"}}</mat-icon>
-                    <mat-spinner *ngIf="!(dataSource?.data.length > 0)">
+                    <mat-spinner *ngIf="!(dataSource?.data &&  dataSource?.data.length)">
                     </mat-spinner>
                 </button>
             </div>
             <div>
                 <h1>check dataSource</h1>
-                <span>{{dataSource?.data.length}}</span>
+                <span>{{dataSource?.data && dataSource?.data.length}}</span>
                 <textarea name="checkdatasource" id="" cols="30" rows="10">{{dataSource?.data| json}}</textarea>
             </div>
             <!-- This template displays the overlay content and is connected to the button -->
@@ -71,9 +70,8 @@
         </form>
     </article>
 </section>
-<section *ngIf="!dataSource?.data.length">
-    <mat-progress-bar mode="buffer" *ngIf="!dataSource?.data.length">
-    </mat-progress-bar>
+<section *ngIf="!(dataSource?.data &&  dataSource?.data.length)">
+    <mat-progress-bar mode="buffer"> </mat-progress-bar>
     <article class="section-article">
         <div class="section-article-title">
             <h1>Hướng dẫn sử dụng overlay-effect-table-filtering-data!</h1>

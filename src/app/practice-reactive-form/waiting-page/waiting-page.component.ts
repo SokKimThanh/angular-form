@@ -1,4 +1,4 @@
-import { UiService } from './waiting-page.service';
+import { WaitingPageService } from './waiting-page.service';
 import { ifStmt } from '@angular/compiler/src/output/output_ast';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
@@ -10,7 +10,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 export class WaitingPageComponent implements OnInit {
   @ViewChild('loading') waitingDiv!: ElementRef;
   @Input() loading!: boolean;
-  constructor(private ui: UiService) { }
+  constructor(private ui: WaitingPageService) { }
 
   ngOnInit(): void {
     if (this.loading) {

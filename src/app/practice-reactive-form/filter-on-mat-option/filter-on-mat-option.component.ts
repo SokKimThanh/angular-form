@@ -1,52 +1,48 @@
+import { OverlayEffectTable } from './../overlay-effect-table/overlay-effect-table';
+import { WaitingPageService } from './../waiting-page/waiting-page.service';
 import { OverLayEffectTableColumn, OverlayEffectTableInput, OverlayEffectTablePaginator } from './../overlay-effect/overlay-effect-table-config.interface';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-export interface Variables {
-  id: number, name: string, address: string, age: number
-}
+import { OverlayEffectTablesDataSource } from './overlay-effect-table.cdk';
+import { OverlayEffectTablesService } from './overlay-effect-table.service';
+
 @Component({
   selector: 'app-filter-on-mat-option',
   templateUrl: './filter-on-mat-option.component.html',
   styleUrls: ['./filter-on-mat-option.component.scss']
 })
 export class FilterOnMatOptionComponent implements OnInit {
-  variables: Variables[] = [];
   showInput!: OverlayEffectTableInput;
   showPaginator!: OverlayEffectTablePaginator;
-  dataSource = new MatTableDataSource(this.variables);
+  dataSource!: MatTableDataSource<any>;
   cols: OverLayEffectTableColumn[] = [
     { key: 'id', display: 'mã hiển thị' },
     { key: 'name', display: 'tên hiển thị' },
-    { key: 'address', display: 'Địa chỉ' },
-    { key: 'age', display: 'tuổi' },
+    { key: 'colour', display: 'Địa chỉ' },
+    { key: 'pet', display: 'tuổi' },
   ]
   loading!: boolean;
-  constructor() {
-    this.loading = true;
-    for (let i = 0; i <= 100; i++) {
-      this.variables.push({ id: i, name: "option " + i, age: i * 2 / 0.5, address: i + " adress" })
-    }
+  constructor(private oetService: OverlayEffectTablesService) {
+
+  }
+
+  ngOnInit(): void {
     this.showInput = {
       isShowInputNameOnly: true,
       showInputSearchID: 'ID',
       showInputSearchName: 'Name',
-      input: [{ key: '', display: '' }]
+      input: [{ key: '', display: '' }],
     };
     this.showPaginator = {
       length: 0,
       pageIndex: 0,
       pageSize: 20,
-      pageSizeOptions: [20, 100, 200, 500, 1000]
+      pageSizeOptions: [20, 100, 200, 500, 1000],
+      sortDirection: 'asc'
     }
-    this.loading = false;
+    this.dataSource = new MatTableDataSource(this.oetService.getOverlayEffectTable)
   }
-
-  ngOnInit(): void {
-    this.loading = true;
-    this.dataSource.data = this.variables;
-    this.loading = false;
-  }
-  outSelectedRow(selectedRow: Variables): void {
+  outSelectedRow(selectedRow: OverlayEffectTable): void {
     console.log(selectedRow);
   }
 }

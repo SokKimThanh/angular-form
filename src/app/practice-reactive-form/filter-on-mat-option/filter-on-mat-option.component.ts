@@ -20,8 +20,10 @@ export class FilterOnMatOptionComponent implements OnInit {
     { key: 'address', display: 'Địa chỉ' },
     { key: 'age', display: 'tuổi' },
   ]
+  loading!: boolean;
   constructor() {
-    for (let i = 0; i <= 10000; i++) {
+    this.loading = true;
+    for (let i = 0; i <= 100; i++) {
       this.variables.push({ id: i, name: "option " + i, age: i * 2 / 0.5, address: i + " adress" })
     }
     this.showInput = {
@@ -36,9 +38,13 @@ export class FilterOnMatOptionComponent implements OnInit {
       pageSize: 20,
       pageSizeOptions: [20, 100, 200, 500, 1000]
     }
+    this.loading = false;
   }
 
   ngOnInit(): void {
+    this.loading = true;
+    this.dataSource.data = this.variables;
+    this.loading = false;
   }
   outSelectedRow(selectedRow: Variables): void {
     console.log(selectedRow);

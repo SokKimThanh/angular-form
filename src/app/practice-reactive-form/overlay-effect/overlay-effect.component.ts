@@ -141,12 +141,6 @@ export class OverlayEffectComponent implements OnInit, AfterViewInit {
   clear(): void {
     this.autocompleteForm.reset();
   }
-  loadingOverlayFilteringTable(): boolean {
-    this.isOpen = !this.isOpen;
-    // this.inputSearch.focus();
-    // this.cd.detectChanges();
-    return this.isOpen;
-  }
   copyExampleCodeHTML(): void {
     this.clipboardApi.copyFromContent(this.exampleCodeHTML);
   }

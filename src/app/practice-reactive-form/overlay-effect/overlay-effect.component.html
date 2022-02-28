@@ -12,10 +12,18 @@
                     <mat-label>{{showInput.showInputSearchName | titlecase}}</mat-label>
                     <input matInput formControlName="inputShowNameFilterControl">
                 </mat-form-field>
-                <button class="form-filter-input-name-button" mat-icon-button (click)="loadingOverlayFilteringTable()"
-                    type="button" cdkOverlayOrigin #trigger='cdkOverlayOrigin'>
+                <button class="form-filter-input-name-button" mat-icon-button (click)="isOpen = !isOpen" type="button"
+                    cdkOverlayOrigin #trigger='cdkOverlayOrigin'
+                    [style.disabled]="!dataSource?.data && !dataSource?.data.length">
                     <mat-icon>{{isOpen ? "close" : "arrow_right"}}</mat-icon>
+                    <mat-spinner *ngIf="!(dataSource?.data.length > 0)">
+                    </mat-spinner>
                 </button>
+            </div>
+            <div>
+                <h1>check dataSource</h1>
+                <span>{{dataSource?.data.length}}</span>
+                <textarea name="checkdatasource" id="" cols="30" rows="10">{{dataSource?.data| json}}</textarea>
             </div>
             <!-- This template displays the overlay content and is connected to the button -->
             <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOpen">
@@ -29,7 +37,7 @@
                             <div class="input-search-container">
                                 <div class="input-search-container-flex">
                                     <button class="input-search-container-flex-button" mat-icon-button
-                                        (click)="loadingOverlayFilteringTable()" matTooltip="Trở về">
+                                        (click)="isOpen = !isOpen" matTooltip="Trở về">
                                         <mat-icon>arrow_back</mat-icon>
                                     </button>
                                     <div class="input-search-container-flex">
@@ -54,7 +62,7 @@
                         </app-overlay-effect-table>
                     </mat-card-content>
                     <mat-card-action class="form-filter-card-overlay-actions">
-                        <button mat-icon-button (click)="loadingOverlayFilteringTable()" matTooltip="Đóng">
+                        <button mat-icon-button (click)="isOpen = !isOpen" matTooltip="Đóng">
                             <mat-icon>close</mat-icon>
                         </button>
                     </mat-card-action>
@@ -100,7 +108,7 @@
             <mat-tab label="filter-on-mat-option.component.html">
                 <div class="section-article-title">
                     <pre class="precode"><code class="code">{{exampleCodeHTML}}</code></pre>
-                    <button mat-icon-button matTooltip="Sao chép" (click)="copyExampleCodeHTML()">
+                    <button class="precode-copy" mat-icon-button matTooltip="Sao chép" (click)="copyExampleCodeHTML()">
                         <mat-icon>content_copy</mat-icon>
                     </button>
                 </div>
@@ -108,7 +116,7 @@
             <mat-tab label="filter-on-mat-option.component.ts">
                 <div class="section-article-title">
                     <pre class="precode"><code class="code">{{exampleCodeTS}}</code></pre>
-                    <button mat-icon-button matTooltip="Sao chép" (click)="copyExampleCodeTS()">
+                    <button class="precode-copy" mat-icon-button matTooltip="Sao chép" (click)="copyExampleCodeTS()">
                         <mat-icon>content_copy</mat-icon>
                     </button>
                 </div>
@@ -116,7 +124,7 @@
             <mat-tab label="filter-on-mat-option.component.scss">
                 <div class="section-article-title">
                     <pre class="precode"><code class="code"> no css!</code></pre>
-                    <button mat-icon-button matTooltip="Sao chép" [ngxClipboard]="">
+                    <button class="precode-copy" mat-icon-button matTooltip="Sao chép" [ngxClipboard]="">
                         <mat-icon>content_copy</mat-icon>
                     </button>
                 </div>

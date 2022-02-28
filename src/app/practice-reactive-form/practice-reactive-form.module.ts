@@ -18,6 +18,7 @@ import { OverlayEffectComponent } from "./overlay-effect/overlay-effect.componen
 import { PracticeReactiveFormComponent } from "./practice-reactive-form.component";
 import { TableReactiveFormComponent } from "./table-reactive-form/table-reactive-form.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { WaitingPageComponent } from './waiting-page/waiting-page.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     OverlayEffectComponent,
     OverlayEffectPaginatorComponent,
     OverlayEffectTableComponent,
+    WaitingPageComponent,
   ],
   imports: [
     CommonModule,
@@ -51,6 +53,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
       { path: 'overlay-effect', component: OverlayEffectComponent },
       { path: 'overlay-effect-paginator', component: OverlayEffectPaginatorComponent },
       { path: 'overlay-effect-table', component: OverlayEffectTableComponent },
+      { path: 'waiting-page', component: WaitingPageComponent },
     ]),
     MaterialModule,
     MatSelectFilterModule,

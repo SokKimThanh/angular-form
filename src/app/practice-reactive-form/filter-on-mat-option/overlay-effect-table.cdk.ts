@@ -1,4 +1,4 @@
-import { OverlayEffectTablePaginator, OverlayEffectTableInput } from '../overlay-effect/overlay-effect-table-config.interface';
+import { OverlayEffectTablePaginator } from '../overlay-effect/overlay-effect-table-config.interface';
 import { OverlayEffectTablesService } from './overlay-effect-table.service';
 import { CollectionViewer, DataSource } from "@angular/cdk/collections";
 import { BehaviorSubject, Observable, catchError, of, finalize } from "rxjs";
@@ -22,7 +22,7 @@ export class OverlayEffectTablesDataSource implements DataSource<OverlayEffectTa
         this.loadingSubject.complete();
     }
 
-    loadOverlayEffectTables(showInput: OverlayEffectTableInput, showPaginator: OverlayEffectTablePaginator) {
+    loadOverlayEffectTables(showPaginator: OverlayEffectTablePaginator) {
 
         this.loadingSubject.next(true);
 

@@ -1,10 +1,8 @@
-import { OverlayEffectTable } from './../overlay-effect-table/overlay-effect-table';
-import { WaitingPageService } from './../waiting-page/waiting-page.service';
 import { OverLayEffectTableColumn, OverlayEffectTableInput, OverlayEffectTablePaginator } from './../overlay-effect/overlay-effect-table-config.interface';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { OverlayEffectTablesDataSource } from './overlay-effect-table.cdk';
 import { OverlayEffectTablesService } from './overlay-effect-table.service';
+import { OverlayEffectTable } from './overlay-effect-table';
 
 @Component({
   selector: 'app-filter-on-mat-option',
@@ -40,7 +38,7 @@ export class FilterOnMatOptionComponent implements OnInit {
       pageSizeOptions: [20, 100, 200, 500, 1000],
       sortDirection: 'asc'
     }
-    this.dataSource = new MatTableDataSource(this.oetService.getOverlayEffectTable)
+    this.dataSource = new MatTableDataSource(this.oetService.getDataExample())
   }
   outSelectedRow(selectedRow: OverlayEffectTable): void {
     console.log(selectedRow);

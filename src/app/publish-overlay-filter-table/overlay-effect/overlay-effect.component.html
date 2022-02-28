@@ -1,0 +1,132 @@
+<section>
+    <article>
+        <form class="form-filter" [formGroup]="autocompleteForm">
+            <div class="form-filter-input-id" *ngIf="!showInput.isShowInputNameOnly">
+                <mat-form-field #filterId appearance="outline">
+                    <mat-label>{{showInput.showInputSearchID | titlecase}}</mat-label>
+                    <input matInput formControlName="inputShowIdFilterControl">
+                </mat-form-field>
+            </div>
+            <div #filterDivName class="form-filter-input-name">
+                <mat-form-field appearance="outline">
+                    <mat-label>{{showInput.showInputSearchName | titlecase}}</mat-label>
+                    <input matInput formControlName="inputShowNameFilterControl">
+                </mat-form-field>
+                <button class="form-filter-input-name-button" mat-icon-button (click)="isOpen = !isOpen" type="button"
+                    cdkOverlayOrigin #trigger='cdkOverlayOrigin'>
+                    <mat-icon>{{isOpen ? "close" : "arrow_right"}}</mat-icon>
+                    <mat-spinner *ngIf="!(dataSource?.data &&  dataSource?.data.length)">
+                    </mat-spinner>
+                </button>
+            </div>
+            <div>
+                <h1>check dataSource</h1>
+                <span>{{dataSource?.data && dataSource?.data.length}}</span>
+                <textarea name="checkdatasource" id="" cols="30" rows="10">{{dataSource?.data| json}}</textarea>
+            </div>
+            <!-- This template displays the overlay content and is connected to the button -->
+            <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOpen">
+                <mat-card class="form-filter-card-overlay">
+                    <mat-card-title class="form-filter-card-overlay-title">
+                        <mat-form-field class="input-search" appearance="fill">
+                            <mat-label>
+                                {{showInput.showInputSearchName?showInput.showInputSearchName: 'Tìm kiếm' |
+                                uppercase}}
+                            </mat-label>
+                            <div class="input-search-container">
+                                <div class="input-search-container-flex">
+                                    <button class="input-search-container-flex-button" mat-icon-button
+                                        (click)="isOpen = !isOpen" matTooltip="Trở về">
+                                        <mat-icon>arrow_back</mat-icon>
+                                    </button>
+                                    <div class="input-search-container-flex">
+                                        <button class="input-search-container-flex-button" mat-icon-button>
+                                            <mat-icon>search</mat-icon>
+                                        </button>
+                                        <input matInput #inputSearch cdkFocusInitial
+                                            formControlName='inputSearchControl'>
+                                        <button mat-icon-button (click)="clear()" *ngIf="isFilteringInputSearch"
+                                            matTooltip="Nhập lại">
+                                            <mat-icon>clear</mat-icon>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-form-field>
+                    </mat-card-title>
+                    <mat-card-content class="form-filter-card-overlay-content">
+                        <app-overlay-effect-table [dataSource]="dataSource" [cols]="tableCols"
+                            [inputFilterNoResult]="inputFilterNoResult" (outSelectedRow)="onSelectedRow($event)"
+                            [showPaginator]="showPaginator">
+                        </app-overlay-effect-table>
+                    </mat-card-content>
+                    <mat-card-action class="form-filter-card-overlay-actions">
+                        <button mat-icon-button (click)="isOpen = !isOpen" matTooltip="Đóng">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-card-action>
+                </mat-card>
+            </ng-template>
+        </form>
+    </article>
+</section>
+<section *ngIf="!(dataSource?.data &&  dataSource?.data.length)">
+    <mat-progress-bar mode="buffer"> </mat-progress-bar>
+    <article class="section-article">
+        <div class="section-article-title">
+            <h1>Hướng dẫn sử dụng overlay-effect-table-filtering-data!</h1>
+        </div>
+        <div class="section-article--condition">
+            <ul class="section-article--condition-list">
+                <li class="section-article--condition-list-items">
+                    <a class="section-article--condition-list-items-link">
+                        <mat-icon>error_outline</mat-icon>
+                        <span>required `[showInput]="showInput"`</span>
+                    </a>
+                    <a class="section-article--condition-list-items-link">
+                        <mat-icon>error_outline</mat-icon>
+                        <span>required `[dataSource]="dataSource"`</span>
+                    </a>
+                    <a class="section-article--condition-list-items-link">
+                        <mat-icon>error_outline</mat-icon>
+                        <span>required `[cols]="cols"`</span>
+                    </a>
+                    <a class="section-article--condition-list-items-link">
+                        <mat-icon>error_outline</mat-icon>
+                        <span>required `[showPaginator]="showPaginator"`</span>
+                    </a>
+                    <a class="section-article--condition-list-items-link">
+                        <mat-icon>error_outline</mat-icon>
+                        <span>required `(outSelectedRow)="outSelectedRow($event)"`</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <mat-tab-group class="section-article-content">
+            <mat-tab label="filter-on-mat-option.component.html">
+                <div class="section-article-title">
+                    <pre class="precode"><code class="code">{{exampleCodeHTML}}</code></pre>
+                    <button class="precode-copy" mat-icon-button matTooltip="Sao chép" (click)="copyExampleCodeHTML()">
+                        <mat-icon>content_copy</mat-icon>
+                    </button>
+                </div>
+            </mat-tab>
+            <mat-tab label="filter-on-mat-option.component.ts">
+                <div class="section-article-title">
+                    <pre class="precode"><code class="code">{{exampleCodeTS}}</code></pre>
+                    <button class="precode-copy" mat-icon-button matTooltip="Sao chép" (click)="copyExampleCodeTS()">
+                        <mat-icon>content_copy</mat-icon>
+                    </button>
+                </div>
+            </mat-tab>
+            <mat-tab label="filter-on-mat-option.component.scss">
+                <div class="section-article-title">
+                    <pre class="precode"><code class="code"> no css!</code></pre>
+                    <button class="precode-copy" mat-icon-button matTooltip="Sao chép" [ngxClipboard]="">
+                        <mat-icon>content_copy</mat-icon>
+                    </button>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </article>
+</section>

@@ -1,0 +1,67 @@
+.hovered {
+  background: rgb(97, 143, 111);
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.highlighted {
+  background: rgb(27, 206, 81);
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+.filter-list-no-result {
+  color: #c2185b;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.table-wrapper {
+  position: relative;
+}
+.table-scroll {
+  overflow: auto;
+  height: 75vh;
+}
+.table-wrapper table {
+  width: 100%;
+}
+.mat-row-search {
+  .table-cell {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+.card-overlay-table {
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+.mat-card-table-turnon-overflow {
+  overflow: auto;
+  max-height: 550px;
+  @media only screen and (max-width: 2560px) {
+    max-height: 80vh !important;
+  }
+  @media only screen and (max-width: 1440px) {
+    max-height: 75vh !important;
+  }
+  @media only screen and (max-width: 1366px) {
+    max-height: 70vh !important;
+  }
+  @media only screen and (max-width: 1024px) {
+    max-height: 550px !important;
+  }
+}
+.mat-card-content {
+  margin: 0;
+}
+.mat-card-actions {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: 0;
+}

@@ -171,6 +171,99 @@
           }
         }
       }
+    },
+    "angular-logging-service": {
+      "projectType": "library",
+      "root": "projects/angular-logging-service",
+      "sourceRoot": "projects/angular-logging-service/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/angular-logging-service/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/angular-logging-service/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/angular-logging-service/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-logging-service/src/test.ts",
+            "tsConfig": "projects/angular-logging-service/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-logging-service/karma.conf.js"
+          }
+        }
+      }
+    },
+    "angular-console-logger": {
+      "projectType": "library",
+      "root": "projects/angular-console-logger",
+      "sourceRoot": "projects/angular-console-logger/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/angular-console-logger/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/angular-console-logger/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/angular-console-logger/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-console-logger/src/test.ts",
+            "tsConfig": "projects/angular-console-logger/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-console-logger/karma.conf.js"
+          }
+        }
+      }
+    },
+    "angular-rating": {
+      "projectType": "library",
+      "root": "projects/angular-rating",
+      "sourceRoot": "projects/angular-rating/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/angular-rating/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/angular-rating/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/angular-rating/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-rating/src/test.ts",
+            "tsConfig": "projects/angular-rating/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-rating/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "angular-form"

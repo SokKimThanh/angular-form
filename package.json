@@ -6,7 +6,13 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build-logging-service": "ng build angular-console-logger",
+    "watch-logging-service": "ng build angular-console-logger --watch",
+    "build-angular-rating": "ng build angular-rating",
+    "watch-angular-rating": "ng build angular-rating --watch",
+    "build-overlay-effect": "ng build overlay-effect",
+    "watch-overlay-effect": "ng build overlay-effect --watch"
   },
   "private": false,
   "dependencies": {

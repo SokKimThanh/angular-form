@@ -17,6 +17,16 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "paths": {
+      "angular-console-logger": [
+        "dist/angular-console-logger/angular-console-logger",
+        "dist/angular-console-logger",
+        "dist/angular-console-logger/angular-console-logger",
+        "dist/angular-console-logger"
+      ],
+      "angular-rating": [
+        "dist/angular-rating/angular-rating",
+        "dist/angular-rating"
+      ],
       "overlay-effect": [
         "dist/overlay-effect/overlay-effect",
         "dist/overlay-effect"

@@ -1,3 +1,5 @@
+import { AngularRatingModule } from 'angular-rating';
+import { CustomLoggingService } from './../core/services/custom-logger.service';
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -19,6 +21,9 @@ import { PracticeReactiveFormComponent } from "./practice-reactive-form.componen
 import { TableReactiveFormComponent } from "./table-reactive-form/table-reactive-form.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { WaitingPageComponent } from './waiting-page/waiting-page.component';
+import { CoreModule } from '../core/core.module';
+import { AngularRatingTestLibComponent } from './angular-rating-test-lib/angular-rating-test-lib.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -35,6 +40,7 @@ import { WaitingPageComponent } from './waiting-page/waiting-page.component';
     OverlayEffectPaginatorComponent,
     OverlayEffectTableComponent,
     WaitingPageComponent,
+    AngularRatingTestLibComponent,
   ],
   imports: [
     CommonModule,
@@ -54,10 +60,13 @@ import { WaitingPageComponent } from './waiting-page/waiting-page.component';
       { path: 'overlay-effect-paginator', component: OverlayEffectPaginatorComponent },
       { path: 'overlay-effect-table', component: OverlayEffectTableComponent },
       { path: 'waiting-page', component: WaitingPageComponent },
+      { path: 'angular-rating', component: AngularRatingTestLibComponent },
     ]),
     MaterialModule,
     MatSelectFilterModule,
     ClipboardModule,
-  ]
+    CoreModule,
+    AngularRatingModule,
+  ],
 })
 export class OverlayFilteringTableModule { }

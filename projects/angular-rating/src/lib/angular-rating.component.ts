@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'lib-angular-rating',
   templateUrl: "./angular-rating.component.html",
-  styles: [
+  styleUrls: ['./angular-rating.component.scss'
   ]
 })
 export class AngularRatingComponent implements OnInit {

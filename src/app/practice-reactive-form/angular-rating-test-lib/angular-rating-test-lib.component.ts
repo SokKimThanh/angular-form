@@ -14,7 +14,8 @@ export class AngularRatingTestLibComponent implements OnInit {
   ngOnInit(): void {
     this.book.rating = 1;
   }
-  changeRating(event: any, book: any) {
+  changeRating(event: any, book: Book) {
+    this.book.rating = event;
     console.log(event, book)
   }
 }

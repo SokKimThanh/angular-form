@@ -1,5 +1,5 @@
 <h1>Angular rating works!</h1>
-<span>
+<span class="rating-wrapped">
     <span *ngFor="let option of options">
         <span (click)="changeRating(option)" [ngClass]="{rated: option <= rating}">
             &#9733;
